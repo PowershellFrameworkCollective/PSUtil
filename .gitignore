@@ -297,3 +297,8 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+
+# PowerShell Studio
+*.psproj
+*.psprojs
+*.temppoint.*
