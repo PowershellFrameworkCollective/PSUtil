@@ -5,7 +5,7 @@
 	ModuleToProcess = 'PSUtil.psm1'
 	
 	# Version number of this module.
-	ModuleVersion = '1.0.0.0'
+	ModuleVersion = '1.0.0.1'
 	
 	# ID used to uniquely identify this module
 	GUID = '9ef51588-c40c-4064-910d-9b624b758cf6'
@@ -20,7 +20,7 @@
 	Copyright = '(c) 2017. All rights reserved.'
 	
 	# Description of the functionality provided by this module
-	Description = 'Module description'
+	Description = 'A module designed to make the daily PowerShell madness easier to bear.'
 	
 	# Minimum version of the Windows PowerShell engine required by this module
 	PowerShellVersion = '3.0'
@@ -32,10 +32,10 @@
 	PowerShellHostVersion = ''
 	
 	# Minimum version of the .NET Framework required by this module
-	DotNetFrameworkVersion = '2.0'
+	DotNetFrameworkVersion = '4.0'
 	
 	# Minimum version of the common language runtime (CLR) required by this module
-	CLRVersion = '2.0.50727'
+	CLRVersion = '4.0.30319'
 	
 	# Processor architecture (None, X86, Amd64, IA64) required by this module
 	ProcessorArchitecture = 'None'
@@ -45,7 +45,7 @@
 	RequiredModules = @('PSFramework')
 	
 	# Assemblies that must be loaded prior to importing this module
-	RequiredAssemblies = @()
+	RequiredAssemblies = @('bin\PSUtil.dll')
 	
 	# Script files (.ps1) that are run in the caller's environment prior to
 	# importing this module
@@ -62,16 +62,33 @@
 	NestedModules = @()
 	
 	# Functions to export from this module
-	FunctionsToExport = '*' #For performanace, list functions explicity
+	FunctionsToExport = @(
+		'Expand-PSUObject',
+		'Select-PSUObjectSample',
+		'Set-PSUObjectType'
+	)
 	
 	# Cmdlets to export from this module
-	CmdletsToExport = '*' 
+	CmdletsToExport = '' 
 	
 	# Variables to export from this module
-	VariablesToExport = '*'
+	VariablesToExport = ''
 	
 	# Aliases to export from this module
-	AliasesToExport = '*' #For performanace, list alias explicity
+	AliasesToExport = @(
+		'a',
+		'c',
+		'cast',
+		'ec',
+		'ex',
+		'exp',
+		'grep',
+		'ic',
+		'ix',
+		'm',
+		's',
+		'v'
+	)
 	
 	# List of all modules packaged with this module
 	ModuleList = @()
