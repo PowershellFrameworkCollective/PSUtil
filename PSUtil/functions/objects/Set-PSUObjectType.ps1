@@ -71,4 +71,4 @@
 		Write-PSFMessage -Level Debug -Message "Casting Objects to another type" -Tag end
 	}
 }
-if (-not (Test-Path alias:cast)) { New-Alias -Name "cast" -Value "Set-PSUObjectType" -Option 'AllScope' -Force -Scope Global }
+Import-PSUAlias -Name "cast" -Command "Set-PSUObjectType"

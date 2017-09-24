@@ -5,7 +5,7 @@
 	ModuleToProcess = 'PSUtil.psm1'
 	
 	# Version number of this module.
-	ModuleVersion = '1.0.0.1'
+	ModuleVersion = '1.0.0.2'
 	
 	# ID used to uniquely identify this module
 	GUID = '9ef51588-c40c-4064-910d-9b624b758cf6'
@@ -64,6 +64,9 @@
 	# Functions to export from this module
 	FunctionsToExport = @(
 		'Expand-PSUObject',
+		'Invoke-PSUDesktop',
+		'Invoke-PSUExplorer',
+		'Invoke-PSUTemp',
 		'Select-PSUObjectSample',
 		'Set-PSUObjectType'
 	)
@@ -79,14 +82,17 @@
 		'a',
 		'c',
 		'cast',
+		'desktop',
 		'ec',
 		'ex',
 		'exp',
+		'explorer',
 		'grep',
 		'ic',
 		'ix',
 		'm',
 		's',
+		'temp',
 		'v'
 	)
 	
@@ -121,10 +127,3 @@
 		
 	} # End of PrivateData hashtable
 }
-
-
-
-
-
-
-

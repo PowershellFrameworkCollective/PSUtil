@@ -173,4 +173,4 @@
 	}
 }
 if (-not $global:DefaultExpandedProperties) { $global:DefaultExpandedProperties = @("Definition", "Guid", "DisinguishedName", "FullName", "Name", "Length") }
-if (-not (Test-Path alias:exp)) { New-Alias -Name "exp" -Value "Expand-PSUObject" -Option 'AllScope' -Force -Scope Global }
+Import-PSUAlias -Name "exp" -Command "Expand-PSUObject"
