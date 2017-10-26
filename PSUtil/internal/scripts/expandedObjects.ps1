@@ -4,7 +4,7 @@ Wrap into a region each, with corresponding region label.
 #>
 
 #region Microsoft.PowerShell.Commands.MatchInfo
-[PSUtil.Object.ObjectHost]::ExpandedTypes[[Microsoft.PowerShell.Commands.MatchInfo]] = {
+[PSUtil.Object.ObjectHost]::ExpandedTypes["Microsoft.PowerShell.Commands.MatchInfo"] = {
 	param (
 		$Object
 	)
@@ -17,7 +17,7 @@ Wrap into a region each, with corresponding region label.
 #endregion Microsoft.PowerShell.Commands.MatchInfo
 
 #region Microsoft.PowerShell.Commands.MemberDefinition
-[PSUtil.Object.ObjectHost]::ExpandedTypes[[Microsoft.PowerShell.Commands.MemberDefinition]] = {
+[PSUtil.Object.ObjectHost]::ExpandedTypes["Microsoft.PowerShell.Commands.MemberDefinition"] = {
 	param (
 		$Object
 	)
@@ -27,7 +27,7 @@ Wrap into a region each, with corresponding region label.
 #endregion Microsoft.PowerShell.Commands.MemberDefinition
 
 #region System.Management.Automation.FunctionInfo
-[PSUtil.Object.ObjectHost]::ExpandedTypes[[System.Management.Automation.FunctionInfo]] = {
+[PSUtil.Object.ObjectHost]::ExpandedTypes["System.Management.Automation.FunctionInfo"] = {
 	param (
 		$Object
 	)
@@ -42,7 +42,7 @@ $($Object.Definition)
 #endregion System.Management.Automation.FunctionInfo
 
 #region System.Management.Automation.AliasInfo
-[PSUtil.Object.ObjectHost]::ExpandedTypes[[System.Management.Automation.AliasInfo]] = {
+[PSUtil.Object.ObjectHost]::ExpandedTypes["System.Management.Automation.AliasInfo"] = {
 	param (
 		$Object
 	)

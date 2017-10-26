@@ -111,7 +111,7 @@
 				"Equals"
 				{
 					# If we didn't ask for a property in specific, and we have something prepared for this type: Run it
-					if ((Test-PSFParameterBinding -ParameterName "Name" -Not) -and ([PSUtil.Object.ObjectHost]::ExpandedTypes[$Object.GetType()]))
+					if ((Test-PSFParameterBinding -ParameterName "Name" -Not) -and ([PSUtil.Object.ObjectHost]::ExpandedTypes[$Object.GetType().FullName]))
 					{
 						[PSUtil.Object.ObjectHost]::ExpandedTypes[$Object.GetType()].Invoke($Object)
 						continue main

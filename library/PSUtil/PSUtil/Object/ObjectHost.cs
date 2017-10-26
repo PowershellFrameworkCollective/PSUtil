@@ -15,6 +15,6 @@ namespace PSUtil.Object
         /// <summary>
         /// Dictionary of types for which special expansion has been prepared.
         /// </summary>
-        public static Dictionary<Type, ScriptBlock> ExpandedTypes = new Dictionary<Type, ScriptBlock>();
+        public static Dictionary<string, ScriptBlock> ExpandedTypes = new Dictionary<string, ScriptBlock>();
     }
 }
