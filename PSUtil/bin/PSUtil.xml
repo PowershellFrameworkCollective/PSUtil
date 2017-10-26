@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PSUtil</name>
+    </assembly>
+    <members>
+        <member name="T:PSUtil.Object.ObjectHost">
+            <summary>
+            Class that hosts static information and helpers for the object type functions
+            </summary>
+        </member>
+        <member name="F:PSUtil.Object.ObjectHost.ExpandedTypes">
+            <summary>
+            Dictionary of types for which special expansion has been prepared.
+            </summary>
+        </member>
+    </members>
+</doc>
