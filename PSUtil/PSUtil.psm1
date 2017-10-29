@@ -1,4 +1,4 @@
-﻿$script:PSUtilModuleRoot = $PSScriptRoot
+﻿$script:PSModuleRoot = $PSScriptRoot
 
 $script:doDotSource = Get-PSFConfigValue -FullName PSUtil.Import.DoDotSource -Fallback $false
 
@@ -34,14 +34,14 @@ function Import-PSUFile
 
 
 # Perform Actions before loading the rest of the content
-. Import-PSUFile -Path "$PSUtilModuleRoot\internal\scripts\preload.ps1"
+. Import-PSUFile -Path "$PSModuleRoot\internal\scripts\preload.ps1"
 
 #region Load functions
-foreach ($function in (Get-ChildItem "$PSUtilModuleRoot\functions" -Recurse -File -Filter "*.ps1"))
+foreach ($function in (Get-ChildItem "$PSModuleRoot\functions" -Recurse -File -Filter "*.ps1"))
 {
 	. Import-PSUFile -Path $function.FullName
 }
 #endregion Load functions
 
 # Perform Actions after loading the module contents
-. Import-PSUFile -Path "$PSUtilModuleRoot\internal\scripts\postload.ps1"
+. Import-PSUFile -Path "$PSModuleRoot\internal\scripts\postload.ps1"

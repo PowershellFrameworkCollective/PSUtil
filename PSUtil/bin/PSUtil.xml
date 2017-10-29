@@ -4,6 +4,41 @@
         <name>PSUtil</name>
     </assembly>
     <members>
+        <member name="T:PSUtil.Configuration.HelpOption">
+            <summary>
+            The ways in which help can be displayed
+            </summary>
+        </member>
+        <member name="F:PSUtil.Configuration.HelpOption.Short">
+            <summary>
+            Only show basic help
+            </summary>
+        </member>
+        <member name="F:PSUtil.Configuration.HelpOption.Detailed">
+            <summary>
+            Show detailed help
+            </summary>
+        </member>
+        <member name="F:PSUtil.Configuration.HelpOption.Examples">
+            <summary>
+            Only show the examples section
+            </summary>
+        </member>
+        <member name="F:PSUtil.Configuration.HelpOption.Full">
+            <summary>
+            Show everything
+            </summary>
+        </member>
+        <member name="F:PSUtil.Configuration.HelpOption.Window">
+            <summary>
+            Show help in a popup window
+            </summary>
+        </member>
+        <member name="F:PSUtil.Configuration.HelpOption.Online">
+            <summary>
+            Show the help website
+            </summary>
+        </member>
         <member name="T:PSUtil.Object.ObjectHost">
             <summary>
             Class that hosts static information and helpers for the object type functions
