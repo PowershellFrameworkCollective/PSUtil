@@ -7,51 +7,86 @@ Set-PSReadlineKeyHandler -Chord Shift+Spacebar -BriefDescription ExpandAlias -De
 	$cursor = $null
 	[Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$ast, [ref]$tokens, [ref]$null, [ref]$cursor)
 	
-	# Find the current command, use Ast to find the currently processed command, even if we are currently typing parameters for it.
-	$commandAst = $ast.FindAll({
-			$node = $args[0]
-			$node -is [System.Management.Automation.Language.CommandAst] -and
-			$node.Extent.StartOffset -le $cursor -and
-			$node.Extent.EndOffset -ge $cursor
-		}, $true)
-	
-	$global:metaData = New-Object PSObject -Property @{
-		Tokens  = $tokens
-		Ast	     = $ast
-		Cursor    = $cursor
-		Commands = $commandAst
-	}
-	
-	# If we are in the process of typing a command ...
-	if ($commandAst -ne $null)
+	$changes = @()
+	$currentCommand = $null
+	foreach ($token in $tokens)
 	{
-		# Get its name
-		$commandName = $commandAst.GetCommandName()
-		if ($commandName -ne $null)
+		if (($token.TokenFlags -eq "CommandName") -and ($token.Kind -eq "Identifier"))
 		{
-			# Ensure it really is its name
-			$command = $ExecutionContext.InvokeCommand.GetCommand($commandName, 'All')
-			if ($command -is [System.Management.Automation.AliasInfo])
+			$currentCommand = Get-Command $token.Text -ErrorAction Ignore
+			if ($alias = Get-Alias -Name $token.Text -ErrorAction Ignore)
 			{
-				$commandName = $command.ResolvedCommandName
+				$currentCommand = $alias.ResolvedCommand
+				$changes += New-Object PSObject -Property @{
+					Text   = $alias.ResolvedCommand.Name
+					Start  = $token.Extent.StartOffset
+					Length = $token.Extent.EndOffset - $token.Extent.StartOffset
+				}
 			}
-			
-			# Get Help
-			if ($commandName -ne $null)
+		}
+		
+		if (($token.Kind -eq "Parameter") -and ($currentCommand -ne $null))
+		{
+			if ($currentCommand.Parameters.Keys -contains $token.ParameterName) { }
+			else
 			{
-				# Call help based on preference
-				switch (Get-PSFConfigValue -FullName 'PSUtil.Help.Preference' -Fallback ([PSUtil.Configuration.HelpOption]::Window))
+				$paramhash = @{ }
+				foreach ($parameter in $currentCommand.Parameters.Values)
 				{
-					"short" { Start-Process powershell.exe -ArgumentList "-NoExit -Command Get-Help $commandName" }
-					"detailed" { Start-Process powershell.exe -ArgumentList "-NoExit -Command Get-Help $commandName -Detailed" }
-					"examples" { Start-Process powershell.exe -ArgumentList "-NoExit -Command Get-Help $commandName -Examples" }
-					"full" { Start-Process powershell.exe -ArgumentList "-NoExit -Command Get-Help $commandName -Full" }
-					"online" { Get-Help $commandName -Online }
-					"window" { Get-Help $commandName -ShowWindow }
-					default { Get-Help $commandName -ShowWindow }
+					$paramhash[$parameter.Name] = $parameter.Name
+					foreach ($a in $parameter.Aliases) { $paramhash[$a] = $parameter.Name }
+				}
+				
+				
+				$resolvedParameter = ""
+				if ($paramhash.ContainsKey($token.ParameterName)) { $resolvedParameter = $paramhash[$token.ParameterName] }
+				else
+				{
+					$results = $null
+					$results = $paramhash.Keys | Where-Object { $_ -like "$($token.ParameterName)*" }
+					if ($results)
+					{
+						if (($results | Measure-Object).Count -eq 1)
+						{
+							$resolvedParameter = $paramhash[$results]
+						}
+					}
+				}
+				
+				if ($resolvedParameter -ne "")
+				{
+					$changes += New-Object PSObject -Property @{
+						Text    = "-$resolvedParameter"
+						Start   = $token.Extent.StartOffset
+						Length  = $token.Extent.EndOffset - $token.Extent.StartOffset
+					}
 				}
 			}
 		}
 	}
+	
+	$finishedString = ""
+	
+	if ($changes.Count -eq 0) { return }
+	else
+	{
+		$source = $ast.Extent.Text
+		$count = 0
+		$index = 0
+		
+		while ($count -lt $changes.Count)
+		{
+			if ($changes[$count].Start -gt $index)
+			{
+				$finishedString += $source.SubString($index, ($changes[$count].Start - $index))
+			}
+			$finishedString += $changes[$count].Text
+			$index = $changes[$count].Start + $changes[$count].Length
+			
+			$count++
+		}
+	}
+	
+	[Microsoft.PowerShell.PSConsoleReadLine]::Replace(0, $source.Length, $finishedString, $null, $null)
 }
 #endregion Shift+Space : Expand Alias
