@@ -73,6 +73,7 @@
 		'Remove-PSUString',
 		'Select-PSUObjectSample',
 		'Set-PSUObjectType',
+		'Set-PSUShell',
 		'Set-PSUString',
 		'Split-PSUString'
 	)
