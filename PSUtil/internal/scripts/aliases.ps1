@@ -12,3 +12,6 @@ Import-PSUAlias -Name "ix" -Command "Import-Clixml"
 Import-PSUAlias -Name "ex" -Command "Export-Clixml"
 Import-PSUAlias -Name "ic" -Command "Import-Csv"
 Import-PSUAlias -Name "ec" -Command "Export-Csv"
+
+# Add alias for easy clipboarding
+Import-PSUAlias -Name "ocb" -Command "Set-Clipboard"

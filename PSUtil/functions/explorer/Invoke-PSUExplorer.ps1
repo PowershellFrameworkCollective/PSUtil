@@ -66,11 +66,18 @@
 			}
 			
 			explorer.exe $finalPath
+			$List += $finalPath
 		}
 		
 		foreach ($Item in $Module)
 		{
+			if ((-not $Duplicates) -and ($List -contains $Item.ModuleBase))
+			{
+				Write-PSFMessage -Level Verbose -Message "Skipping folder since it already was opened once: $($Item.ModuleBase)" -Target $Item -Tag skip
+				continue
+			}
 			explorer.exe $Item.ModuleBase
+			$List += $Item.ModuleBase
 		}
 	}
 	End {

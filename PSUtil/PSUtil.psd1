@@ -5,7 +5,7 @@
 	ModuleToProcess = 'PSUtil.psm1'
 	
 	# Version number of this module.
-	ModuleVersion = '1.0.0.2'
+	ModuleVersion = '1.1.0.4'
 	
 	# ID used to uniquely identify this module
 	GUID = '9ef51588-c40c-4064-910d-9b624b758cf6'
@@ -62,13 +62,20 @@
 	NestedModules = @()
 	
 	# Functions to export from this module
-	FunctionsToExport = @(
+	FunctionsToExport	    = @(
+		'Add-PSUString',
 		'Expand-PSUObject',
+		'Format-PSUString',
 		'Invoke-PSUDesktop',
 		'Invoke-PSUExplorer',
 		'Invoke-PSUTemp',
+		'Join-PSUString',
+		'Remove-PSUString',
 		'Select-PSUObjectSample',
-		'Set-PSUObjectType'
+		'Set-PSUObjectType',
+		'Set-PSUShell',
+		'Set-PSUString',
+		'Split-PSUString'
 	)
 	
 	# Cmdlets to export from this module
@@ -80,6 +87,7 @@
 	# Aliases to export from this module
 	AliasesToExport = @(
 		'a',
+		'add',
 		'c',
 		'cast',
 		'desktop',
@@ -87,13 +95,20 @@
 		'ex',
 		'exp',
 		'explorer',
+		'format',
 		'grep',
 		'ic',
 		'ix',
+		'join',
 		'm',
+		'ocb',
+		'replace',
 		's',
+		'split',
 		'temp',
-		'v'
+		'trim',
+		'v',
+		'wrap'
 	)
 	
 	# List of all modules packaged with this module

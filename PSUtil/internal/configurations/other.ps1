@@ -1,0 +1,1 @@
+﻿Set-PSFConfig -Module PSUtil -Name 'Help.Preference' -Value ([PSUtil.Configuration.HelpOption]::Window) -Initialize -Validation "PSUGetHelpOptions" -Handler { } -Description "The way in which help is shown when pressing the 'F1' key. Can be any of the following options: Short | Detailed | Examples | Full | Window | Online"
