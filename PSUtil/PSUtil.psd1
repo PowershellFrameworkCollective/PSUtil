@@ -101,6 +101,7 @@
 		'ix',
 		'join',
 		'm',
+		'new',
 		'ocb',
 		'replace',
 		's',
