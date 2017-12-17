@@ -15,3 +15,6 @@ Import-PSUAlias -Name "ec" -Command "Export-Csv"
 
 # Add alias for easy clipboarding
 Import-PSUAlias -Name "ocb" -Command "Set-Clipboard"
+
+# Add alias for creating object
+Import-PSUAlias -Name "new" -Command "New-Object"
