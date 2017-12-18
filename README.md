@@ -85,3 +85,8 @@ If you want to make sure that the module is always available in full, add it to 
 ```powershell
 notepad $profile
 ```
+
+## Links
+
+ - [2017-12-17 : Released: 1.1.0.4 - String operators and keybindings](https://allthingspowershell.blogspot.com/2017/12/keybdindings-and-string-manipulation.html)
+ - [2017-09-26 : Released: 1.0.0.0 - Introduction to convenience](https://allthingspowershell.blogspot.com/2017/09/releasing-new-module-enter-psutil.html)
