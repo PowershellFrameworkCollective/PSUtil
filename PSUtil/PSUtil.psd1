@@ -2,10 +2,10 @@
 @{
 	
 	# Script module or binary module file associated with this manifest
-	ModuleToProcess = 'PSUtil.psm1'
+	RootModule = 'PSUtil.psm1'
 	
 	# Version number of this module.
-	ModuleVersion = '1.1.0.4'
+	ModuleVersion = '1.1.0.5'
 	
 	# ID used to uniquely identify this module
 	GUID = '9ef51588-c40c-4064-910d-9b624b758cf6'
@@ -42,7 +42,7 @@
 	
 	# Modules that must be imported into the global environment prior to importing
 	# this module
-	RequiredModules = @('PSFramework')
+	RequiredModules = @(@{ ModuleName = 'PSFramework'; ModuleVersion = '0.9.4.9' })
 	
 	# Assemblies that must be loaded prior to importing this module
 	RequiredAssemblies = @('bin\PSUtil.dll')
