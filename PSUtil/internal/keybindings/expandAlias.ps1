@@ -85,6 +85,11 @@ Set-PSReadlineKeyHandler -Chord Shift+Spacebar -BriefDescription ExpandAlias -De
 			
 			$count++
 		}
+		
+		if (($index + 1) -lt $source.Length)
+		{
+			$finishedString += $source.SubString($index)
+		}
 	}
 	
 	[Microsoft.PowerShell.PSConsoleReadLine]::Replace(0, $source.Length, $finishedString, $null, $null)
