@@ -10,16 +10,66 @@
 
 Set-PSReadlineKeyHandler -Chord F7 -BriefDescription History -Description 'Show command history' -ScriptBlock {
 	
-	# Search the current history, ignore entries we don't like
-	$history = [System.Collections.ArrayList]@(
-		foreach ($line in (Get-History).CommandLine)
+	#region Helper function
+	function Get-PSReadlineHistory
+	{
+		[CmdletBinding()]
+		Param (
+			
+		)
+		
+		$stream = New-Object System.IO.FileStream((Get-PSReadlineOption).HistorySavePath, [System.IO.FileMode]::Open, [System.IO.FileAccess]::Read, [System.IO.FileShare]::ReadWrite)
+		$reader = New-Object System.IO.StreamReader($stream)
+		
+		$currentLine = ""
+		
+		while (-not $reader.EndOfStream)
 		{
-			# I skip stuff that starts with regions, since that's mostly chunky stuff I copied from somewhere anyway
-			# It clobbers the list and quite frankly hasn't once been something I wanted.
-			if ($line -like "#region*") { continue }
-			$line
+			$line = $reader.ReadLine()
+			if ($line -like '*`')
+			{
+				$currentLine += $line -replace '`$', "`n"
+			}
+			elseif ($currentLine -ne "")
+			{
+				$currentLine += $line
+				$currentLine
+				$currentLine = ""
+			}
+			else { $line }
 		}
-	)
+		$reader.Dispose()
+		$stream.Dispose()
+	}
+	#endregion Helper function
+	
+	$option = Get-PSFConfigValue -FullName 'PSUtil.History.Preference' -Fallback ([PSUtil.Configuration.HistoryOption]::Global)
+	$limit = Get-PSFConfigValue -FullName 'PSUtil.History.Limit' -Fallback -1
+	
+	if ($limit -eq 0) { return 0 }
+	
+	if ($option -like "Global")
+	{
+		$history = [System.Collections.ArrayList](Get-PSReadlineHistory)
+	}
+	else
+	{
+		# Search the current history, ignore entries we don't like
+		$history = [System.Collections.ArrayList]@(
+			foreach ($line in (Get-History).CommandLine)
+			{
+				$line
+			}
+		)
+	}
+	
+	# Enforce limit, if present
+	if (($limit -gt 0) -and ($history.Count -gt $limit))
+	{
+		$lower = $history.Count - $limit - 1
+		$upper = $history.Count - 1
+		[System.Collections.ArrayList]$history = $history[$lower..$upper]
+	}
 	
 	# Reverse order: The latest is the first entry
 	$history.Reverse()
