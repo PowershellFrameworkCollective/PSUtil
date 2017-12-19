@@ -39,6 +39,21 @@
             Show the help website
             </summary>
         </member>
+        <member name="T:PSUtil.Configuration.HistoryOption">
+            <summary>
+            The options on where you search for your history
+            </summary>
+        </member>
+        <member name="F:PSUtil.Configuration.HistoryOption.Session">
+            <summary>
+            Only the history from the current session is shown
+            </summary>
+        </member>
+        <member name="F:PSUtil.Configuration.HistoryOption.Global">
+            <summary>
+            Uses the PSReadline command history to show all commands ever sent
+            </summary>
+        </member>
         <member name="T:PSUtil.Object.ObjectHost">
             <summary>
             Class that hosts static information and helpers for the object type functions
