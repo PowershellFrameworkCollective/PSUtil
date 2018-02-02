@@ -1,6 +1,6 @@
 ﻿# Changelog
 
-## v 1.1.1.9
+## Version 1.1.1.9 (2018-02-02)
  - new: Command Convert-PSUObject / convert. (#9)
    Allows converting input from a source format to a destination format. Can be dynamically extended.
  - new: Command Register-PSUObjectConversion. (#9)
