@@ -21,6 +21,7 @@
 	
 			Sets the current location to the desktop path of the current user.
 	#>
+	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseOutputTypeCorrectly", "")]
 	[CmdletBinding()]
 	Param (
 		[Parameter(Position = 0)]

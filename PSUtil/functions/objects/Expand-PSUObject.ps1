@@ -1,5 +1,5 @@
 ﻿function Expand-PSUObject
-{	
+{
 	<#
 		.SYNOPSIS
 			A comfortable replacement for Select-Object -ExpandProperty.
@@ -54,6 +54,7 @@
 	
 			Expands all properties from all objects returned by dir that match the string "name" ("PSChildName", "FullName", "Name", "BaseName" for directories)
 	#>
+	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidGlobalVars", "")]
 	[CmdletBinding(DefaultParameterSetName = "Equals")]
 	Param (
 		[Parameter(Position = 0, ParameterSetName = "Equals")]
@@ -103,7 +104,7 @@
 	{
 		:main foreach ($Object in $InputObject)
 		{
-			if ($Object -eq $null) { continue }
+			if ($null -eq $Object) { continue }
 			
 			switch ($ParSet)
 			{
@@ -120,7 +121,7 @@
 					# If we already have determined the property to use, return it
 					if ($____found)
 					{
-						if ($Object.$n9ZPiBh8CI -ne $null) { $Object.$n9ZPiBh8CI }
+						if ($null -ne $Object.$n9ZPiBh8CI) { $Object.$n9ZPiBh8CI }
 						continue main
 					}
 					
@@ -131,7 +132,7 @@
 						{
 							$n9ZPiBh8CI = $Def
 							$____found = $true
-							if ($Object.$n9ZPiBh8CI -ne $null) { $Object.$n9ZPiBh8CI }
+							if ($null -ne $Object.$n9ZPiBh8CI) { $Object.$n9ZPiBh8CI }
 							
 							break
 						}
@@ -146,7 +147,7 @@
 					# Return all properties whose name are similar
 					foreach ($prop in ($Object.PSObject.Properties | Where-Object Name -like $Name | Select-Object -ExpandProperty Name))
 					{
-						if ($Object.$prop -ne $null) { $Object.$prop }
+						if ($null -ne $Object.$prop) { $Object.$prop }
 					}
 					continue
 				}
@@ -158,7 +159,7 @@
 					# Return all properties whose name match
 					foreach ($prop in ($Object.PSObject.Properties | Where-Object Name -Match $Name | Select-Object -ExpandProperty Name))
 					{
-						if ($Object.$prop -ne $null) { $Object.$prop }
+						if ($null -ne $Object.$prop) { $Object.$prop }
 					}
 					continue main
 				}

@@ -27,6 +27,7 @@
 			
 			Tries to convert strings with numeric values into pure integers (hint: This will probably succeede).
 	#>
+	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
 	[CmdletBinding(DefaultParameterSetName = "String")]
 	Param (
 		[Parameter(ValueFromPipeline = $true)]

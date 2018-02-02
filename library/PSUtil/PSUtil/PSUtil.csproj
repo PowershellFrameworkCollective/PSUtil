@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Configuration\HelpOption.cs" />
     <Compile Include="Configuration\HistoryOption.cs" />
+    <Compile Include="Object\ObjectConversionMapping.cs" />
     <Compile Include="Object\ObjectHost.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -28,6 +28,7 @@
 	
 		returns "foo 001-002","foo 003-004","foo 005-006"
 #>
+	[OutputType([System.String])]
 	[CmdletBinding()]
 	Param (
 		[Parameter(ValueFromPipeline = $true)]

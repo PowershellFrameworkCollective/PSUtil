@@ -1,5 +1,5 @@
 ﻿#region F1 : Get Help
-Set-PSReadlineKeyHandler -Chord F1 -BriefDescription CommandHelp -Description "Open the help window for the current command" -ScriptBlock {
+Set-PSReadlineKeyHandler -Chord (Get-PSFConfigValue -FullName psutil.keybinding.gethelp -Fallback 'F1') -BriefDescription CommandHelp -Description "Open the help window for the current command" -ScriptBlock {
 	
 	# Get current line(s) of input
 	$ast = $null

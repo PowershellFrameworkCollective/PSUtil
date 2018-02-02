@@ -39,6 +39,7 @@
 			- Use a foreground color of DarkGreen for all output, default prompt color and comment color (PSReadline syntax detection remains unaffected)
 			- Use a background color of Black
 	#>
+	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
 	[CmdletBinding()]
 	Param (
 		[int]
@@ -61,7 +62,7 @@
 	)
 	
 	# Test whether the PSReadline Module is loaded
-	$PSReadline = (Get-Module PSReadline) -ne $null
+	$PSReadline = $null -ne (Get-Module PSReadline)
 	
 	#region Utility Functions
 	function Set-ShellWindowWidth
