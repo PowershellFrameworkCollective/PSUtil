@@ -54,6 +54,26 @@
             Uses the PSReadline command history to show all commands ever sent
             </summary>
         </member>
+        <member name="T:PSUtil.Object.ObjectConversionMapping">
+            <summary>
+            Contains all the information needed to convert one object type to another
+            </summary>
+        </member>
+        <member name="F:PSUtil.Object.ObjectConversionMapping.From">
+            <summary>
+            From what to convert
+            </summary>
+        </member>
+        <member name="F:PSUtil.Object.ObjectConversionMapping.To">
+            <summary>
+            To what to convert
+            </summary>
+        </member>
+        <member name="F:PSUtil.Object.ObjectConversionMapping.Script">
+            <summary>
+            The logic that does the converting
+            </summary>
+        </member>
         <member name="T:PSUtil.Object.ObjectHost">
             <summary>
             Class that hosts static information and helpers for the object type functions
@@ -62,6 +82,11 @@
         <member name="F:PSUtil.Object.ObjectHost.ExpandedTypes">
             <summary>
             Dictionary of types for which special expansion has been prepared.
+            </summary>
+        </member>
+        <member name="F:PSUtil.Object.ObjectHost.Conversions">
+            <summary>
+            List of registered conversions
             </summary>
         </member>
     </members>

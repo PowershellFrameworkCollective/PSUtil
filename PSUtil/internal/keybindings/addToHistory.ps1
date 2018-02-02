@@ -1,5 +1,5 @@
 ﻿#region ALT+W : Save current line(s) in history but don't execute
-Set-PSReadlineKeyHandler -Chord Alt+w -BriefDescription SaveInHistory -Description "Save current line in history but do not execute" -ScriptBlock {
+Set-PSReadlineKeyHandler -Chord (Get-PSFConfigValue -FullName psutil.keybinding.sendtohistory -Fallback 'Alt+w') -BriefDescription SaveInHistory -Description "Save current line in history but do not execute" -ScriptBlock {
 	
 	$line = $null
 	

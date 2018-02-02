@@ -1,5 +1,5 @@
 ﻿#region Shift+Space : Expand Alias
-Set-PSReadlineKeyHandler -Chord Shift+Spacebar -BriefDescription ExpandAlias -Description "Converts aliases into the resolved command / parameter" -ScriptBlock {
+Set-PSReadlineKeyHandler -Chord (Get-PSFConfigValue -FullName psutil.keybinding.expandalias -Fallback 'Shift+Spacebar') -BriefDescription ExpandAlias -Description "Converts aliases into the resolved command / parameter" -ScriptBlock {
 	
 	# Get current line(s) of input
 	$tokens = $null

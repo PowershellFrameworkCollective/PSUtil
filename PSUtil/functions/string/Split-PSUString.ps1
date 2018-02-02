@@ -25,6 +25,7 @@
 	
 		Returns "abc","def"
 #>
+	[OutputType([System.String[]])]
 	[CmdletBinding(DefaultParameterSetName = "Regex")]
 	Param (
 		[Parameter(ValueFromPipeline = $true)]

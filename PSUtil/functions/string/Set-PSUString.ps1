@@ -40,6 +40,8 @@
 	
 		Returns "abc &edf"
 #>
+	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
+	[OutputType([System.String])]
 	[CmdletBinding(DefaultParameterSetName = "regex")]
 	Param (
 		[Parameter(ValueFromPipeline = $true)]
@@ -51,6 +53,7 @@
 		$What,
 		
 		[Parameter(Position = 1, Mandatory = $true)]
+		[AllowEmptyString()]
 		[string]
 		$With,
 		

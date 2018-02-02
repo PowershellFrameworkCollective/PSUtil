@@ -8,7 +8,7 @@
 	has been inspired was doing, so if that's your preference, feel free to check it out and 'pilfer' the original ;)
 #>
 
-Set-PSReadlineKeyHandler -Chord F7 -BriefDescription History -Description 'Show command history' -ScriptBlock {
+Set-PSReadlineKeyHandler -Chord (Get-PSFConfigValue -FullName psutil.keybinding.browsehistory -Fallback 'F7') -BriefDescription History -Description 'Show command history' -ScriptBlock {
 	
 	#region Helper function
 	function Get-PSReadlineHistory
