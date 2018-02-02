@@ -24,6 +24,8 @@
 	
 		Retrieves all content from file.txt, then trims each line.
 #>
+	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
+	[OutputType([System.String])]
 	[CmdletBinding()]
 	Param (
 		[Parameter(ValueFromPipeline = $true)]

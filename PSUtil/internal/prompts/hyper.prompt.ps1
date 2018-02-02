@@ -74,7 +74,7 @@
 	frame " | "
 	cont $executionContext.SessionState.Path.CurrentLocation.ProviderPath
 	frame " $("$Arr" * (1 + $NestedPromptLevel)) "
-	#endregion Path Section	
+	#endregion Path Section
 	
 	Write-Host ""
 	" "

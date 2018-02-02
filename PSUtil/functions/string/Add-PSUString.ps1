@@ -21,6 +21,7 @@
 	
 		Returns a set of strings from 'srv-ctx1-dev' through 'srv-ctx10-dev'
 #>
+	[OutputType([System.String])]
 	[CmdletBinding()]
 	Param (
 		[Parameter(ValueFromPipeline = $true)]
