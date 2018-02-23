@@ -32,7 +32,6 @@
 	[CmdletBinding()]
 	Param (
 		[Parameter(ValueFromPipeline = $true)]
-		[string[]]
 		$InputObject,
 		
 		[Parameter(Position = 0, Mandatory = $true)]
@@ -49,9 +48,9 @@
 	}
 	process
 	{
-		foreach ($line in $InputObject)
+		foreach ($item in $InputObject)
 		{
-			$values += $line
+			$values += $item
 			if ($values.Count -ge $LotSize)
 			{
 				$Format -f $values
