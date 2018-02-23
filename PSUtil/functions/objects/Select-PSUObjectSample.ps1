@@ -15,6 +15,7 @@
 		
 		.PARAMETER Number
 			How many objects to pick
+			Use a negative number to pick the last X items instead.
 		
 		.EXAMPLE
 			PS C:\> Get-ChildItem | Select-PSUObjectSample -Skip 1 -Number 3
@@ -43,28 +44,27 @@
 	
 	Begin
 	{
-		# Counter for how many objects were skipped
-		$skipped = 0
-		
-		# Counter for how many objects were sent onwards
-		$sent = 0
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand('Select-Object', [System.Management.Automation.CommandTypes]::Cmdlet)
+        $splat = @{ }
+		if ($Skip -gt 0) { $splat["Skip"] = $Skip }
+		if ($Number -ge 0) { $splat["First"] = $Number + 1 }
+		else { $splat["Last"] = $Number * -1 }
+		$scriptCmd = { & $wrappedCmd @splat }
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline()
+        $steppablePipeline.Begin($true)
 	}
 	
 	Process
 	{
 		foreach ($o in $InputObject)
 		{
-			# If we have yet to skip objects, do so and continue with the next object
-			if ($Skip -gt $skipped) { $skipped++; continue }
-			
-			# If we have yet to send on an object, do so, then continue with the next object
-			if ($sent -lt $Number) { $sent++; $o; continue }
+			$steppablePipeline.Process($o)
 		}
 	}
 	
 	End
 	{
-		
+		$steppablePipeline.End()
 	}
 }
 Import-PSUAlias -Name "s" -Command "Select-PSUObjectSample"
