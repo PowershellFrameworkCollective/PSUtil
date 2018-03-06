@@ -5,7 +5,7 @@
 	RootModule = 'PSUtil.psm1'
 	
 	# Version number of this module.
-	ModuleVersion = '1.1.1.10'
+	ModuleVersion = '1.1.2.11'
 	
 	# ID used to uniquely identify this module
 	GUID = '9ef51588-c40c-4064-910d-9b624b758cf6'
@@ -64,6 +64,7 @@
 	# Functions to export from this module
 	FunctionsToExport	    = @(
 		'Add-PSUString',
+		'Backup-PSULocation',
 		'Convert-PSUObject',
 		'Expand-PSUObject',
 		'Format-PSUString',
@@ -71,9 +72,11 @@
 		'Invoke-PSUExplorer',
 		'Invoke-PSUTemp',
 		'Join-PSUString',
+		'New-PSUDirectory',
 		'Register-PSUObjectConversion',
 		'Remove-PSUString',
 		'Select-PSUObjectSample',
+		'Set-PSUDrive',
 		'Set-PSUObjectType',
 		'Set-PSUShell',
 		'Set-PSUString',
@@ -90,6 +93,7 @@
 	AliasesToExport = @(
 		'a',
 		'add',
+		'bu',
 		'c',
 		'cast',
 		'convert',
@@ -104,10 +108,12 @@
 		'ix',
 		'join',
 		'm',
+		'mcd',
 		'new',
 		'ocb',
 		'replace',
 		's',
+		'set-as',
 		'split',
 		'temp',
 		'trim',
@@ -128,19 +134,19 @@
 		PSData = @{
 			
 			# Tags applied to this module. These help with module discovery in online galleries.
-			# Tags = @()
+			Tags = @('Utility')
 			
 			# A URL to the license for this module.
 			# LicenseUri = ''
 			
 			# A URL to the main website for this project.
-			# ProjectUri = ''
+			ProjectUri = 'http://psframework.org'
 			
 			# A URL to an icon representing this module.
 			# IconUri = ''
 			
 			# ReleaseNotes of this module
-			# ReleaseNotes = ''
+			ReleaseNotes = 'https://github.com/PowershellFrameworkCollective/PSUtil/blob/master/PSUtil/changelog.md'
 			
 		} # End of PSData hashtable
 		
