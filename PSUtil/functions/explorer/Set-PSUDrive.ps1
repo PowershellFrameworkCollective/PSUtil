@@ -27,6 +27,7 @@
 	
 		Thank you for sharing and granting permission to use this convenience :)
 #>
+	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory = $true)]
