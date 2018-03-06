@@ -1,6 +1,11 @@
 ﻿# Changelog
 
-## Version 1.1.1.10 (2018-02-23
+## Version 1.1.2.11 (2018-03-06)
+ - new: Command Backup-PSULocation / bu (#18)
+ - new: Command Set-PSUDrive / set-as (#18)
+ - new: Command New-PSUDirectory / mcd (#18)
+
+## Version 1.1.1.10 (2018-02-23)
  - upd: Select-PSUObjectSample / s can now select last items (#15)
  - fix: Format-PSUString / format will now format numbers correctly (#14)
 
