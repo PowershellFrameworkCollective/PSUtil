@@ -5,7 +5,7 @@
 	RootModule = 'PSUtil.psm1'
 	
 	# Version number of this module.
-	ModuleVersion = '1.1.2.12'
+	ModuleVersion = '1.1.3.13'
 	
 	# ID used to uniquely identify this module
 	GUID = '9ef51588-c40c-4064-910d-9b624b758cf6'
@@ -80,7 +80,8 @@
 		'Set-PSUObjectType',
 		'Set-PSUShell',
 		'Set-PSUString',
-		'Split-PSUString'
+		'Split-PSUString',
+		'Start-PSUTimer'
 	)
 	
 	# Cmdlets to export from this module
@@ -116,6 +117,7 @@
 		'set-as',
 		'split',
 		'temp',
+		'timer',
 		'trim',
 		'v',
 		'wrap'

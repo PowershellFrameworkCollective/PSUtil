@@ -1,5 +1,8 @@
 ﻿# Changelog
 
+## Version 1.1.3.13 (2018-03-20)
+ - new: Command Start-PSUTimer / timer
+
 ## Version 1.1.2.12 (2018-03-06)
  - new: Command Backup-PSULocation / bu (#18)
  - new: Command Set-PSUDrive / set-as (#18)
