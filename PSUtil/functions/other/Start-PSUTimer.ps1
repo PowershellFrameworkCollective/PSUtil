@@ -29,6 +29,7 @@
 	
 		After 170 seconds give warning that the tea is ready.
 #>
+	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
 	[CmdletBinding()]
 	param (
 		[Parameter(Position = 0, Mandatory = $true)]
