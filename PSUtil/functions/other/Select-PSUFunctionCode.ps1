@@ -22,8 +22,8 @@
 		If enabled, the white space will not be trimmed.
 	
 	.PARAMETER EnableException
-        Replaces user friendly yellow warnings with bloody red exceptions of doom!
-        Use this if you want the function to throw terminating errors you want to catch.
+		Replaces user friendly yellow warnings with bloody red exceptions of doom!
+		Use this if you want the function to throw terminating errors you want to catch.
 	
 	.EXAMPLE
 		PS C:\> Select-PSUFunctionCode -function 'Start-PSUTimer'
@@ -147,17 +147,17 @@
 		# This is the default behavior with no params
 		if (-not ($NoWait -or $PassThru))
 		{
-			$data = $FinalArray | Out-GridView -PassThru -Title 'Get-PSFunctionCode' | Expand-PSUObject text
+			$data = $FinalArray | Out-GridView -PassThru -Title 'Select-PSFunctionCode' | Expand-PSUObject text
 			if ($data) { $data | Set-Clipboard }
 		}
 		
 		if ($NoWait)
 		{
-			$FinalArray | Out-GridView -Title 'Get-PSFunctionCode'
+			$FinalArray | Out-GridView -Title 'Select-PSFunctionCode'
 		}
 		if ($PassThru)
 		{
-			$FinalArray | Out-GridView -PassThru -Title 'Get-PSFunctionCode'
+			$FinalArray | Out-GridView -PassThru -Title 'Select-PSFunctionCode'
 		}
 	}
 }
