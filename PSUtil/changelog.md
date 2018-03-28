@@ -1,5 +1,8 @@
 ﻿# Changelog
 
+## Version x.x.x.x (x-x-x)
+ - new: Select-PSUFunctionCode / Inspect
+
 ## Version 1.1.3.13 (2018-03-20)
  - new: Command Start-PSUTimer / timer
 
