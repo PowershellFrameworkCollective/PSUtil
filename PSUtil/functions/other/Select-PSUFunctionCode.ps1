@@ -36,7 +36,7 @@
 		You can also pipe functions in.
 	
 	.NOTES
-		Additional information about the function.
+		Author: Andrew Pla
 #>
 	
 	[CmdletBinding(DefaultParameterSetName = 'Default')]
