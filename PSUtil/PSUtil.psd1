@@ -5,7 +5,7 @@
 	RootModule = 'PSUtil.psm1'
 	
 	# Version number of this module.
-	ModuleVersion = '1.1.3.13'
+	ModuleVersion = '1.1.4.15'
 	
 	# ID used to uniquely identify this module
 	GUID = '9ef51588-c40c-4064-910d-9b624b758cf6'
@@ -42,7 +42,7 @@
 	
 	# Modules that must be imported into the global environment prior to importing
 	# this module
-	RequiredModules = @(@{ ModuleName = 'PSFramework'; ModuleVersion = '0.9.9.19' })
+	RequiredModules = @(@{ ModuleName = 'PSFramework'; ModuleVersion = '0.9.13.34' })
 	
 	# Assemblies that must be loaded prior to importing this module
 	RequiredAssemblies = @('bin\PSUtil.dll')
@@ -75,6 +75,7 @@
 		'New-PSUDirectory',
 		'Register-PSUObjectConversion',
 		'Remove-PSUString',
+		'Select-PSUFunctionCode',
 		'Select-PSUObjectSample',
 		'Set-PSUDrive',
 		'Set-PSUObjectType',
@@ -106,6 +107,7 @@
 		'format',
 		'grep',
 		'ic',
+		'inspect',
 		'ix',
 		'join',
 		'm',
