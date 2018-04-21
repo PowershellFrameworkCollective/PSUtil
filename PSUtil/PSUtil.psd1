@@ -42,7 +42,7 @@
 	
 	# Modules that must be imported into the global environment prior to importing
 	# this module
-	RequiredModules = @(@{ ModuleName = 'PSFramework'; ModuleVersion = '0.9.13.34' })
+	RequiredModules = @(@{ ModuleName = 'PSFramework'; ModuleVersion = '0.9.15.41' })
 	
 	# Assemblies that must be loaded prior to importing this module
 	RequiredAssemblies = @('bin\PSUtil.dll')

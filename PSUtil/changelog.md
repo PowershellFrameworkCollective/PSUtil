@@ -1,5 +1,8 @@
 ﻿# Changelog
 
+## Version 1.1.4.16 (????-??-??)
+ - upd: Command Set-PSUString / replace - can now do lambda replacement
+
 ## Version 1.1.4.15 (2018-03-30)
  - new: Select-PSUFunctionCode / Inspect
 

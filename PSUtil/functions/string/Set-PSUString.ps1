@@ -25,6 +25,10 @@
 		Default: IgnoreCase
 		When using regex replace, it may become desirable to specify options to the system.
 	
+	.PARAMETER EnableException
+        Replaces user friendly yellow warnings with bloody red exceptions of doom!
+        Use this if you want the function to throw terminating errors you want to catch.
+	
 	.EXAMPLE
 		"abc ABC" | replace b d
 	
@@ -54,7 +58,7 @@
 		
 		[Parameter(Position = 1, Mandatory = $true)]
 		[AllowEmptyString()]
-		[string]
+		[object]
 		$With,
 		
 		[Parameter(ParameterSetName = "Simple")]
@@ -64,16 +68,39 @@
 		
 		[Parameter(ParameterSetName = "Regex")]
 		[System.Text.RegularExpressions.RegexOptions]
-		$Options = [System.Text.RegularExpressions.RegexOptions]::IgnoreCase
+		$Options = [System.Text.RegularExpressions.RegexOptions]::IgnoreCase,
+		
+		[switch]
+		$EnableException
 	)
 	
-	begin { }
+	begin
+	{
+		if ($With -isnot [System.Management.Automation.ScriptBlock])
+		{
+			$With = "$With"
+		}
+		elseif ($Simple)
+		{
+			Stop-PSFFunction -Message "Cannot do a lambda replace with a simple string replacement. Please specify a string or remove the simple parameter." -EnableException $EnableException -Category InvalidArgument -Tag 'fail','validate'
+			return
+		}
+	}
 	process
 	{
+		if (Test-PSFFunctionInterrupt) { return }
+		
 		foreach ($line in $InputString)
 		{
-			if ($Simple) { $line.Replace($What, $With) }
-			else { [regex]::Replace($line, $What, $With, $Options) }
+			try
+			{
+				if ($Simple) { $line.Replace($What, $With) }
+				else { [regex]::Replace($line, $What, $With, $Options) }
+			}
+			catch
+			{
+				Stop-PSFFunction -Message "Failed to replace line" -EnableException $EnableException -ErrorRecord $_ -Tag 'Fail', 'record' -Continue
+			}
 		}
 	}
 	end { }
