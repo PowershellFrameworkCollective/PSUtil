@@ -95,11 +95,11 @@
 			try
 			{
 				if ($Simple) { $line.Replace($What, $With) }
-				[regex]::Replace($line, $What, $With, $Options)
+				else { [regex]::Replace($line, $What, $With, $Options) }
 			}
 			catch
 			{
-				Stop-PSFFunction -Message "Failed to replace line" -EnableException $EnableException -ErrorRecord $_ -Tag 'Fail','record' -Continue
+				Stop-PSFFunction -Message "Failed to replace line" -EnableException $EnableException -ErrorRecord $_ -Tag 'Fail', 'record' -Continue
 			}
 		}
 	}
