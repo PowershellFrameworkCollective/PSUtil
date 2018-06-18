@@ -2,6 +2,7 @@
 . Import-PSUFile -Path "$PSModuleRoot\internal\scripts\aliases.ps1"
 . Import-PSUFile -Path "$PSModuleRoot\internal\scripts\keybindings.ps1"
 . Import-PSUFile -Path "$PSModuleRoot\internal\scripts\license.ps1"
+. Import-PSUFile -Path "$PSModuleRoot\bin\type-aliases.ps1"
 
 # TEPP Stuff
 foreach ($file in (Get-ChildItem "$PSModuleRoot\internal\TEPP\scripts"))

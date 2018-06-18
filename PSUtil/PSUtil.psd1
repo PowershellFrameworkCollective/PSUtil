@@ -5,7 +5,7 @@
 	RootModule = 'PSUtil.psm1'
 	
 	# Version number of this module.
-	ModuleVersion = '1.1.4.15'
+	ModuleVersion = '1.1.5.17'
 	
 	# ID used to uniquely identify this module
 	GUID = '9ef51588-c40c-4064-910d-9b624b758cf6'
@@ -17,7 +17,7 @@
 	CompanyName = 'Infernal Associates ltd.'
 	
 	# Copyright statement for this module
-	Copyright = '(c) 2017. All rights reserved.'
+	Copyright = '(c) Friedrich Weinmann 2017. All rights reserved.'
 	
 	# Description of the functionality provided by this module
 	Description = 'A module designed to make the daily PowerShell madness easier to bear.'
@@ -42,7 +42,7 @@
 	
 	# Modules that must be imported into the global environment prior to importing
 	# this module
-	RequiredModules = @(@{ ModuleName = 'PSFramework'; ModuleVersion = '0.9.15.41' })
+	RequiredModules = @(@{ ModuleName = 'PSFramework'; ModuleVersion = '0.9.21.62' })
 	
 	# Assemblies that must be loaded prior to importing this module
 	RequiredAssemblies = @('bin\PSUtil.dll')
@@ -76,6 +76,7 @@
 		'Register-PSUObjectConversion',
 		'Remove-PSUString',
 		'Select-PSUFunctionCode',
+		'Select-PSUObject',
 		'Select-PSUObjectSample',
 		'Set-PSUDrive',
 		'Set-PSUObjectType',
@@ -118,6 +119,7 @@
 		's',
 		'set-as',
 		'split',
+		'spo',
 		'temp',
 		'timer',
 		'trim',
