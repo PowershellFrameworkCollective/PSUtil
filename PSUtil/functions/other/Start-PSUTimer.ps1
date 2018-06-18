@@ -9,8 +9,8 @@
 		Provides both visual and sound warnings.
 		Also provides a progress bar with a time remaining display.
 	
-	.PARAMETER Seconds
-		The seconds to wait.
+	.PARAMETER Duration
+		The time to wait.
 	
 	.PARAMETER Message
 		What to wait for.
@@ -27,14 +27,15 @@
 	.EXAMPLE
 		PS C:\> timer 170 Tea
 	
-		After 170 seconds give warning that the tea is ready.
+		After 170 Duration give warning that the tea is ready.
 #>
 	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
 	[CmdletBinding()]
 	param (
 		[Parameter(Position = 0, Mandatory = $true)]
-		[int]
-		$Seconds,
+		[Alias('Seconds')]
+		[PSFDateTime]
+		$Duration,
 		
 		[Parameter(Position = 1, Mandatory = $true)]
 		$Message,
@@ -54,7 +55,7 @@
 		Write-PSFMessage -Level InternalComment -Message "Bound parameters: $($PSBoundParameters.Keys -join ", ")" -Tag 'debug', 'start', 'param'
 		
 		$start = Get-Date
-		$end = $start.AddSeconds($Seconds)
+		$end = $Duration.Value
 		
 		function Get-FriendlyTime
 		{
@@ -99,7 +100,7 @@
 			if (-not $NoProgress)
 			{
 				$friendlyTime = Get-FriendlyTime -Seconds ($end - (Get-Date)).TotalSeconds
-				[int]$percent = ((Get-Date) - $start).TotalSeconds / $Seconds * 100
+				[int]$percent = ((Get-Date) - $start).TotalSeconds / ($end - $start).TotalSeconds * 100
 				Write-Progress -Activity "Waiting for $Message" -Status "Time remaining: $($friendlyTime)" -PercentComplete ([System.Math]::Min($percent, 100))
 			}
 		}
@@ -120,7 +121,7 @@
 	}
 	end
 	{
-	
+		
 	}
 }
 Import-PSUAlias -Name "timer" -Command "Start-PSUTimer"
