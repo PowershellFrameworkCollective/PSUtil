@@ -50,6 +50,7 @@
     <Compile Include="Configuration\HistoryOption.cs" />
     <Compile Include="Object\ObjectConversionMapping.cs" />
     <Compile Include="Object\ObjectHost.cs" />
+    <Compile Include="Parameter\SelectParameter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

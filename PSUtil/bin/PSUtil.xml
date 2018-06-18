@@ -89,5 +89,32 @@
             List of registered conversions
             </summary>
         </member>
+        <member name="T:PSUtil.Parameter.SelectParameter">
+            <summary>
+            Class that automatically parses input chosen for the -Property parameter of Select-PSUObject
+            </summary>
+        </member>
+        <member name="F:PSUtil.Parameter.SelectParameter.InputObject">
+            <summary>
+            The original input object
+            </summary>
+        </member>
+        <member name="F:PSUtil.Parameter.SelectParameter.Value">
+            <summary>
+            The value as Select-Object wants it
+            </summary>
+        </member>
+        <member name="M:PSUtil.Parameter.SelectParameter.#ctor(System.String)">
+            <summary>
+            Builds a property parameter from string
+            </summary>
+            <param name="Value">The string to interpret</param>
+        </member>
+        <member name="M:PSUtil.Parameter.SelectParameter.#ctor(System.Collections.Hashtable)">
+            <summary>
+            Builds a select parameter from a hashtable (pretty straightforward)
+            </summary>
+            <param name="Hash">The hashtable to accept</param>
+        </member>
     </members>
 </doc>
