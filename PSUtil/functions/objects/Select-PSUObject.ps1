@@ -51,6 +51,22 @@
 	
 	.PARAMETER Index
 		Specifies an array of objects based on their index values. Enter the indexes in a comma-separated list.
+	
+	.EXAMPLE
+		PS C:\> Get-ChildItem | Select-PSUObject *, "Length as Size size MB:2:1"
+	
+		Selects all properties from the input objects ...
+		- adding a new property named "Size" ...
+		- With the Length property recalculated to MB ...
+		- With 2 decimals ...
+		- With the size identifier attached
+	
+	.EXAMPLE
+		PS C:\> Get-ChildItem | Select-PSUObject *, "Length as RemoteLength from remotefiles where Name = Name"
+	
+		Selects all properties from the input objects ...
+		- Adding a new property named "RemoteLength" ...
+		- Which is picked from the object stored in the variable $remotefiles that has the same name as the input object
 #>
 	[CmdletBinding(DefaultParameterSetName = 'DefaultParameter', RemotingCapability = 'None')]
 	param (
