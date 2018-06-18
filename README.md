@@ -60,7 +60,7 @@ gmo PSUtil | explorer
  
  ## Alias Warning
  
- This module is choke full with aliases. They are plentiful, as aliases are a major factor to convenience, and this module is all about convenience.
+ This module is chock-full with aliases. They are plentiful, as aliases are a major factor to convenience, and this module is all about convenience.
  Aliases will not overwrite existing aliases.
  Individual aliases can be disabled using the configuration system.
  

@@ -1,5 +1,9 @@
 ﻿# Changelog
 
+## Version 1.1.5.17 (2018-06-19)
+ - new: Command Select-PSUObject - Select-Object in awesome.
+ - upd: Command Set-PSUString / replace - can now do lambda replacement
+
 ## Version 1.1.4.15 (2018-03-30)
  - new: Select-PSUFunctionCode / Inspect
 
