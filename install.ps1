@@ -16,6 +16,10 @@
 	
 	.PARAMETER UserMode
 		The downloaded module will be moved to the user profile, rather than program files.
+		
+	.PARAMETER Scope
+		By default, the downloaded module will be moved to program files.
+		Setting this to 'CurrentUser' installs to the userprofile of the current user.
 
 	.PARAMETER Force
 		The install script will overwrite an existing module.
@@ -27,6 +31,10 @@ Param (
 	
 	[switch]
 	$UserMode,
+	
+	[ValidateSet('AllUsers', 'CurrentUser')]
+	[string]
+	$Scope = "AllUsers",
 	
 	[switch]
 	$Force
@@ -42,6 +50,15 @@ $BaseUrl = "https://github.com/PowershellFrameworkCollective/PSUtil"
 # If the module is in a subfolder of the cloned repository, specify relative path here. Empty string to skip.
 $SubFolder = "PSUtil"
 #endregion Configuration for cloning script
+
+#region Parameter Calculation
+$doUserMode = $false
+if ($UserMode) { $doUserMode = $true }
+if ($install_CurrentUser) { $doUserMode = $true }
+if ($Scope -eq 'CurrentUser') { $doUserMode = $true }
+
+if ($install_Branch) { $Branch = $install_Branch }
+#endregion Parameter Calculation
 
 #region Utility Functions
 function Compress-Archive
@@ -2349,7 +2366,7 @@ function Write-LocalMessage
         [string]$Message
     )
 
-    if (Test-Path function:Write-PSFMessage) { Write-PSFMessage -Level Important -Message $Message }
+    if (([System.Management.Automation.PSTypeName]'PSFramework.Commands.WritePSFMessageCommand').Type) { Write-PSFMessage -Level Important -Message $Message -FunctionName "Install-$ModuleName" }
     else { Write-Host $Message }
 }
 #endregion Utility Functions
@@ -2378,7 +2395,7 @@ try
 	
 	# Determine output path
 	$path = "$($env:ProgramFiles)\WindowsPowerShell\Modules\$($ModuleName)"
-	if ($UserMode) { $path = "$($HOME)\Documents\WindowsPowerShell\Modules\$($ModuleName)" }
+	if ($doUserMode) { $path = "$(Split-Path $profile.CurrentUserAllHosts)\Modules\$($ModuleName)" }
 	if ($PSVersionTable.PSVersion.Major -ge 5) { $path += "\$moduleVersion" }
 	
 	if ((Test-Path $path) -and (-not $Force))
