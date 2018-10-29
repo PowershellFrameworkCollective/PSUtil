@@ -3,6 +3,8 @@
 . Import-PSUFile -Path "$PSModuleRoot\internal\scripts\keybindings.ps1"
 . Import-PSUFile -Path "$PSModuleRoot\internal\scripts\license.ps1"
 . Import-PSUFile -Path "$PSModuleRoot\bin\type-aliases.ps1"
+# Import aliases for Set-PSUPath
+. Import-PSUFile -Pat "$PSModuleRoot\internal\scripts\pathAliases.ps1"
 
 # TEPP Stuff
 foreach ($file in (Get-ChildItem "$PSModuleRoot\internal\TEPP\scripts")) {
@@ -13,9 +15,4 @@ foreach ($file in (Get-ChildItem "$PSModuleRoot\internal\TEPP\scripts")) {
 # Convert-PSUObject Conversions
 foreach ($file in (Get-ChildItem "$PSModuleRoot\internal\conversions")) {
     . Import-PSUFile -Path $file.FullName
-}
-
-# Set Path Aliases for Set-PSUPath from config system
-foreach ($alias in (Get-PSUPathAlias)) {
-    Import-PSUAlias -Name $alias.fullname -Command 'Set-PSUPath'
 }
