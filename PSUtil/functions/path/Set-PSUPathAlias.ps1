@@ -14,20 +14,26 @@ function Set-PSUPathAlias {
 		This is the path that you want your location to change to when the alias is called.
 
 	.PARAMETER Register
-		A description of the Register parameter.
+        Registers the configuration setting to the UserDefault scope. This allows you to set aliases quickly.
+        For more advanced options, see Register-PSFConfig.
 
 	.EXAMPLE
-        PS C:\> Set-PSUPathAlias
+        PS C:\> Set-PSUPathAlias -Alias 'work' -Path 'C:\work'
+        Creates an alias to Set-PSUPath that will set the location to 'c:\work'
+
+    .EXAMPLE
+        PS C:\> Set-PSUPathAlias -Alias 'repos' -Path 'C:\repos' -Register
+        Creates an alias for repos and registers the setting so that it will persist.
 #>
 
     [CmdletBinding()]
     param
     (
-        [Parameter(Position = 0)]
+        [Parameter(Position = 0, Mandatory)]
         [string]
         $Alias,
 
-        [Parameter(Position = 1)]
+        [Parameter(Position = 1, Mandatory)]
         [string]
         $Path,
 
