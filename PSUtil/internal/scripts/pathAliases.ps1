@@ -1,4 +1,3 @@
-
 # Set Path Aliases for Set-PSUPath from config system
 $aliases = ((Get-PSUPathAlias).name.replace('.', ' ') -split ' ')[-1]
 
