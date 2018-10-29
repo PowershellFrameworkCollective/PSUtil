@@ -5,14 +5,17 @@
 . Import-PSUFile -Path "$PSModuleRoot\bin\type-aliases.ps1"
 
 # TEPP Stuff
-foreach ($file in (Get-ChildItem "$PSModuleRoot\internal\TEPP\scripts"))
-{
-	. Import-PSUFile -Path $file.FullName
+foreach ($file in (Get-ChildItem "$PSModuleRoot\internal\TEPP\scripts")) {
+    . Import-PSUFile -Path $file.FullName
 }
 . Import-PSUFile -Path "$PSModuleRoot\internal\TEPP\assignment.ps1"
 
 # Convert-PSUObject Conversions
-foreach ($file in (Get-ChildItem "$PSModuleRoot\internal\conversions"))
-{
-	. Import-PSUFile -Path $file.FullName
+foreach ($file in (Get-ChildItem "$PSModuleRoot\internal\conversions")) {
+    . Import-PSUFile -Path $file.FullName
+}
+
+# Set Path Aliases for Set-PSUPath from config system
+foreach ($alias in (Get-PSUPathAlias)) {
+    Import-PSUAlias -Name $alias.fullname -Command 'Set-PSUPath'
 }
