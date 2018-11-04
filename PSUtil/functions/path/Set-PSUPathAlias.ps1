@@ -25,7 +25,7 @@
         PS C:\> Set-PSUPathAlias -Alias 'repos' -Path 'C:\repos' -Register
         Creates an alias for repos and registers the setting so that it will persist.
 #>
-
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
     [CmdletBinding()]
     param
     (
