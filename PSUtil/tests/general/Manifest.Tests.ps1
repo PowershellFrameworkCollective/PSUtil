@@ -1,4 +1,4 @@
-﻿Describe "Validating the module manifest" {
+Describe "Validating the module manifest" {
 	$moduleRoot = (Resolve-Path "$PSScriptRoot\..\..").Path
 	$manifest = ((Get-Content "$moduleRoot\PSUtil.psd1") -join "`n") | Invoke-Expression
 	[version]$moduleVersion = Get-Item "$moduleRoot\PSUtil.psm1" | Select-String -Pattern '\$script:PSModuleVersion = "(.*?)"' | ForEach-Object { $_.Matches[0].Groups[1].Value }
@@ -6,7 +6,7 @@
 		It "Exports all functions in the public folder" {
 			$files = Get-ChildItem "$moduleRoot\functions" -Recurse -File -Filter "*.ps1"
 			$count = (Compare-Object -ReferenceObject $files.BaseName -DifferenceObject $manifest.FunctionsToExport).Count
-			$count | Should be 0
+			$count | Should -belessthan 1
 		}
 		
 		It "Exports none of its internal functions" {
