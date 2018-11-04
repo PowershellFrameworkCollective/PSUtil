@@ -1,4 +1,4 @@
-function Set-PSUPathAlias {
+﻿function Set-PSUPathAlias {
     <#
 	.SYNOPSIS
 		Used to create an an alias that sets your location to the path you specify.

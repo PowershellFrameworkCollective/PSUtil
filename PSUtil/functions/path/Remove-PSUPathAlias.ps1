@@ -1,4 +1,4 @@
-function Unregister-PSUPathAlias {
+﻿function Unregister-PSUPathAlias {
     <#
     .SYNOPSIS
         Removes a path alias fromm the configuration system.
