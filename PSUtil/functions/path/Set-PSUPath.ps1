@@ -19,7 +19,7 @@
 		Set-PSUPath detected that 'Software' was the alias that called it and then sends it to the path.
 		It receives the path from Get-PSUPathAlias 'software'
 #>
-
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
     [CmdletBinding()]
     param (
         $Alias = $MyInvocation.line
