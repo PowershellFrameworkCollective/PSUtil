@@ -8,13 +8,13 @@
 
 	.PARAMETER Alias
 		Name of the Alias that will be created for Set-PSUPath.
-		Set-PSU Path detects the alias that called it and then find the corresponding PSFConfig entry for it.
+		Set-PSU Path detects the alias that called it and then finds the corresponding PSFConfig entry for it.
 
 	.PARAMETER Path
 		This is the path that you want your location to change to when the alias is called.
 
 	.PARAMETER Register
-        Registers the configuration setting to the UserDefault scope. This allows you to set aliases quickly.
+        Causes PSUtil to remember the alias across sessions.
         For more advanced options, see Register-PSFConfig.
 
 	.EXAMPLE
@@ -23,7 +23,7 @@
 
     .EXAMPLE
         PS C:\> Set-PSUPathAlias -Alias 'repos' -Path 'C:\repos' -Register
-        Creates an alias for repos and registers the setting so that it will persist.
+        Creates an alias for repos and registers the setting so that it will persist between sessions.
 #>
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
     [CmdletBinding()]
