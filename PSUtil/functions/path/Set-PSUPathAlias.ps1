@@ -45,7 +45,14 @@
         Set-PSFConfig -FullName psutil.pathalias.$Alias -Value $Path -Description 'Sets an alias for Set-PSUPath that takes you to the path specified in the value.'
     }
     catch {
-        Stop-PSFFunction -Message 'Error encountered. Alias not set.' -Category InvalidOperation -Tag fail -Exception $_
+        $stopParams = @{
+            Message         = 'Error encountered. Alias not set'
+            Category        = 'InvalidOperation'
+            Tag             = 'Fail'
+            ErroRecord      = $_
+            EnableException = $EnableException
+        }
+        Stop-PSFFunction @stopParams
         return
     }
 
@@ -57,7 +64,14 @@
         Import-PSUAlias -Name $Alias -Command Set-PSUPath
     }
     catch {
-        Stop-PSFFunction -Message 'Error encountered. Alias not set.' -Category InvalidOperation -Tag fail -Exception $_
+        $stopParams = @{
+            Message         = 'Error. Alias not set'
+            Category        = 'InvalidOperation'
+            Tag             = 'Fail'
+            ErroRecord      = $_
+            EnableException = $EnableException
+        }
+        Stop-PSFFunction @stopParams
         return
     }
 }
