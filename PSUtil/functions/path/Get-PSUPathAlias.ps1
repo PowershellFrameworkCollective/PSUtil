@@ -25,7 +25,7 @@
 
     foreach ($ali in $aliases) {
         [pscustomobject]@{
-            Alias = ($ali.fullname -replace 'psutil.pathalias.')
+            Alias = ($ali.fullname -replace '^psutil.pathalias.')
             Path  = $ali.value
         }
     }
