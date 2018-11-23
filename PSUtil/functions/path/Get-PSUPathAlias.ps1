@@ -1,6 +1,5 @@
-﻿function Get-PSUPathAlias
-{
-<#
+﻿function Get-PSUPathAlias {
+    <#
 	.SYNOPSIS
 		Gets the PSUPathAlias configuration values.
 
@@ -16,10 +15,18 @@
 		PS C:\> Get-PSUPathAlias
 		Returns all aliases
 #>
-	[CmdletBinding()]
-	param (
-		[string]
-		$Alias = '*'
-	)
-	Get-PSFConfig -FullName psutil.pathalias.$Alias
+    [CmdletBinding()]
+    param (
+        [string]
+        $Alias = '*'
+    )
+
+    $aliases = Get-PSFConfig -FullName psutil.pathalias.$Alias
+
+    foreach ($ali in $aliases) {
+        [pscustomobject]@{
+            Alias = ($ali.fullname -replace 'psutil.pathalias.')
+            Path  = $ali.value
+        }
+    }
 }
