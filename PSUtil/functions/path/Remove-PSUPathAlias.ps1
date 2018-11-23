@@ -12,6 +12,7 @@
         Removes the path alias named work from the configuration system.
     #>
     [CmdletBinding()]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
     param (
         [Parameter(ValuefromPipelineByPropertyName = $true)]
         $Alias
