@@ -1,4 +1,4 @@
-﻿function Unregister-PSUPathAlias {
+﻿function Remove-PSUPathAlias {
     <#
     .SYNOPSIS
         Removes a path alias fromm the configuration system.
@@ -13,7 +13,11 @@
     #>
     [CmdletBinding()]
     param (
+        [Parameter(ValuefromPipelineByPropertyName = $true)]
         $Alias
     )
-    Get-PSFConfig -FullName psutil.pathalias.$Alias | Unregister-PSFConfig
+
+    process {
+        Get-PSFConfig -FullName psutil.pathalias.$Alias | Unregister-PSFConfig
+    }
 }
