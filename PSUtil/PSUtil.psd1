@@ -75,6 +75,7 @@
         'Join-PSUString',
         'New-PSUDirectory',
         'Register-PSUObjectConversion',
+        'Remove-PSUPathAlias'
         'Remove-PSUString',
         'Select-PSUFunctionCode',
         'Select-PSUObject',
