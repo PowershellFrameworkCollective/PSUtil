@@ -1,4 +1,6 @@
-﻿function Expand-PSUObject
+﻿[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidGlobalVars", "")]
+
+function Expand-PSUObject
 {
 	<#
 		.SYNOPSIS
