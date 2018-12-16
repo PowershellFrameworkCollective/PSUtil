@@ -1,4 +1,4 @@
-New-PSFLicense -Product 'PSUtil' -Manufacturer 'Friedrich Weinmann' -ProductVersion $script:ModuleVersion -ProductType Module -Name MIT -Version "1.0.0.0" -Date (Get-Date "2018-12-16") -Text @"
+﻿New-PSFLicense -Product 'PSUtil' -Manufacturer 'Friedrich Weinmann' -ProductVersion $script:ModuleVersion -ProductType Module -Name MIT -Version "1.0.0.0" -Date (Get-Date "2018-12-16") -Text @"
 Copyright (c) 2018 Friedrich Weinmann
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
