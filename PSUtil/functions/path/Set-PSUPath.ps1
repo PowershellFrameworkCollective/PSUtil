@@ -9,11 +9,11 @@
 
 	.PARAMETER Alias
 		This is the name of the alias that called the command.
-        Default Value is $MyInvocation.line and is detected automatically
+        	Default Value is $MyInvocation.line and is detected automatically
 
-    .PARAMETER EnableException
-        Replaces user friendly yellow warnings with bloody red exceptions of doom!
-        Use this if you want the function to throw terminating errors you want to catch.
+    	.PARAMETER EnableException
+        	Replaces user friendly yellow warnings with bloody red exceptions of doom!
+        	Use this if you want the function to throw terminating errors you want to catch.
 
 	.EXAMPLE
 		PS C:\> Software
@@ -60,7 +60,7 @@
             Category        = 'InvalidOperation'
             Tag             = 'fail'
             ErrorRecord     = $_
-            EnableException = $EnableExceiption
+            EnableException = $EnableException
         }
         Stop-PSFFunction @psfFuncParams
         return
