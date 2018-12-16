@@ -18,8 +18,8 @@
         	For more advanced options, see Register-PSFConfig.
 		
 	.PARAMETER EnableException
-		This parameters disables user-friendly warnings and enables the throwing of exceptions.
-		This is less user friendly, but allows catching exceptions in calling scripts.
+		Replaces user friendly yellow warnings with bloody red exceptions of doom!
+        	Use this if you want the function to throw terminating errors you want to catch.
 
 	.EXAMPLE
         	PS C:\> Set-PSUPathAlias -Alias 'work' -Path 'C:\work'
