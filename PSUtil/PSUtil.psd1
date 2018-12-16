@@ -3,10 +3,10 @@
 	ModuleToProcess = 'PSUtil.psm1'
 	
 	# Version number of this module.
-	ModuleVersion = '1.0.0'
+	ModuleVersion = '2.0.0'
 	
 	# ID used to uniquely identify this module
-	GUID = 'f2df13af-4247-45f7-9f22-5cfc47d5bbac'
+	GUID = '9ef51588-c40c-4064-910d-9b624b758cf6'
 	
 	# Author of this module
 	Author = 'Friedrich Weinmann'
@@ -21,7 +21,7 @@
 	Description = 'Makes the daily PowerShell madness and toil easier to bear'
 	
 	# Minimum version of the Windows PowerShell engine required by this module
-	PowerShellVersion = '5.0'
+	PowerShellVersion = '3.0'
 	
 	# Modules that must be imported into the global environment prior to importing
 	# this module
@@ -30,7 +30,7 @@
 	)
 	
 	# Assemblies that must be loaded prior to importing this module
-	# RequiredAssemblies = @('bin\PSUtil.dll')
+	RequiredAssemblies = @('bin\PSUtil.dll')
 	
 	# Type files (.ps1xml) to be loaded when importing this module
 	# TypesToProcess = @('xml\PSUtil.Types.ps1xml')
@@ -39,7 +39,32 @@
 	# FormatsToProcess = @('xml\PSUtil.Format.ps1xml')
 	
 	# Functions to export from this module
-	FunctionsToExport = ''
+	FunctionsToExport  = @(
+		'Add-PSUString'
+		'Backup-PSULocation'
+		'Convert-PSUObject'
+		'Expand-PSUObject'
+		'Format-PSUString'
+		'Get-PSUPathAlias'
+		'Invoke-PSUDesktop'
+		'Invoke-PSUExplorer'
+		'Invoke-PSUTemp'
+		'Join-PSUString'
+		'New-PSUDirectory'
+		'Register-PSUObjectConversion'
+		'Remove-PSUPathAlias'
+		'Remove-PSUString'
+		'Select-PSUFunctionCode'
+		'Select-PSUObjectSample'
+		'Set-PSUDrive'
+		'Set-PSUObjectType'
+		'Set-PSUPath'
+		'Set-PSUPathAlias'
+		'Set-PSUShell'
+		'Set-PSUString'
+		'Split-PSUString'
+		'Start-PSUTimer'
+	)
 	
 	# Cmdlets to export from this module
 	CmdletsToExport = ''
@@ -48,7 +73,39 @@
 	VariablesToExport = ''
 	
 	# Aliases to export from this module
-	AliasesToExport = ''
+	AliasesToExport    = @(
+		'a',
+		'add',
+		'bu',
+		'c',
+		'cast',
+		'convert',
+		'desktop',
+		'ec',
+		'ex',
+		'exp',
+		'explorer',
+		'format',
+		'grep',
+		'ic',
+		'inspect',
+		'ix',
+		'join',
+		'm',
+		'mcd',
+		'new',
+		'ocb',
+		'replace',
+		's',
+		'set-as',
+		'split',
+		'spo',
+		'temp',
+		'timer',
+		'trim',
+		'v',
+		'wrap'
+	)
 	
 	# List of all modules packaged with this module
 	ModuleList = @()
@@ -63,19 +120,19 @@
 		PSData = @{
 			
 			# Tags applied to this module. These help with module discovery in online galleries.
-			# Tags = @()
+			Tags = @('Utility')
 			
 			# A URL to the license for this module.
 			# LicenseUri = ''
 			
 			# A URL to the main website for this project.
-			# ProjectUri = ''
+			ProjectUri = 'http://psframework.org'
 			
 			# A URL to an icon representing this module.
 			# IconUri = ''
 			
 			# ReleaseNotes of this module
-			# ReleaseNotes = ''
+			ReleaseNotes = 'https://github.com/PowershellFrameworkCollective/PSUtil/blob/master/PSUtil/changelog.md'
 			
 		} # End of PSData hashtable
 		

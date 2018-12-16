@@ -11,14 +11,22 @@ foreach ($file in (Get-ChildItem (Join-PSFPath $script:ModuleRoot 'internal' 'te
 # Load License
 . Import-ModuleFile -Path "$script:ModuleRoot\internal\scripts\license.ps1"
 
+# Load expansions for Expand-PSUObject
 . Import-ModuleFile -Path "$script:ModuleRoot\internal\scripts\expandedObjects.ps1"
+
+# Load aliases shipped with this module
 . Import-ModuleFile -Path "$script:ModuleRoot\internal\scripts\aliases.ps1"
+
+# Load keybindings shipped with this module
 . Import-ModuleFile -Path "$script:ModuleRoot\internal\scripts\keybindings.ps1"
+
+# Load type aliases
 . Import-ModuleFile -Path "$script:ModuleRoot\bin\type-aliases.ps1"
+
 # Import aliases for Set-PSUPath
 . Import-ModuleFile -Path "$script:ModuleRoot\internal\scripts\pathAliases.ps1"
 
 # Convert-PSUObject Conversions
-foreach ($file in (Get-ChildItem (Join-PSFPath $script:ModuleRoot 'internal' 'conversions')) {
+foreach ($file in (Get-ChildItem (Join-PSFPath $script:ModuleRoot 'internal' 'conversions'))) {
     . Import-ModuleFile -Path $file.FullName
 }
