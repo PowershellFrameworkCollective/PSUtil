@@ -9,4 +9,4 @@ internal\scripts\aliases.ps1
 internal\scripts\keybindings.ps1
 bin\type-aliases.ps1
 internal\scripts\license.ps1
-internal\scripts\conversions\*.ps1
+internal\conversions\*.ps1
