@@ -34,9 +34,6 @@
 		
 		.PARAMETER InputObject
 			The objects whose properties are to be expanded.
-	
-		.PARAMETER RestoreDefaults
-			Restores $DefaultExpandedProperties to the default list of property-names.
 		
 		.EXAMPLE
 			PS C:\> dir | exp
@@ -54,7 +51,6 @@
 	
 			Expands all properties from all objects returned by dir that match the string "name" ("PSChildName", "FullName", "Name", "BaseName" for directories)
 	#>
-	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidGlobalVars", "")]
 	[CmdletBinding(DefaultParameterSetName = "Equals")]
 	Param (
 		[Parameter(Position = 0, ParameterSetName = "Equals")]
@@ -73,10 +69,7 @@
 		
 		[Parameter(ValueFromPipeline = $true)]
 		[object]
-		$InputObject,
-		
-		[switch]
-		$RestoreDefaults
+		$InputObject
 	)
 	
 	Begin
@@ -95,12 +88,10 @@
 			$n9ZPiBh8CI = $Name
 			$____found = $true
 		}
-		
-		# Restore to default if necessary
-		if ($RestoreDefaults) { $global:DefaultExpandedProperties = @("Definition", "Guid", "DisinguishedName", "FullName", "Name", "Length") }
+		$DefaultExpandedProperties = Get-PSFConfigValue -FullName 'PSutil.Expand.DefaultProperties'
 	}
 	
-	Process
+	process
 	{
 		:main foreach ($Object in $InputObject)
 		{
@@ -173,5 +164,4 @@
 		Write-PSFMessage -Level Debug -Message "Expanding Objects" -Tag end
 	}
 }
-if (-not $global:DefaultExpandedProperties) { $global:DefaultExpandedProperties = @("Definition", "Guid", "DisinguishedName", "FullName", "Name", "Length") }
 Import-PSUAlias -Name "exp" -Command "Expand-PSUObject"

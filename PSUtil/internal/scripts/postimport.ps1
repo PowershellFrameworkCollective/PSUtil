@@ -1,4 +1,4 @@
-# Add all things you want to run after importing the main code
+﻿# Add all things you want to run after importing the main code
 
 # Load Tab Expansion
 foreach ($file in (Get-ChildItem (Join-PSFPath $script:ModuleRoot 'internal' 'tepp' '*.tepp.ps1') -ErrorAction Ignore)) {

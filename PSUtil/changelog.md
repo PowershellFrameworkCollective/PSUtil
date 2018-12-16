@@ -9,6 +9,7 @@
  - upd: Alias `ex` now points at `Export-PSFClixml`
  - upd: Alias `ix` now points at `Import-PSFClixml`
  - upd: Alias `spo` now points at `Select-PSFObject`
+ - upd: Moved the list of default properties to expand using Expand-PSUObject to configuration
 
 ## Version 1.1.5.17 (2018-06-19)
  - new: Command Select-PSUObject - Select-Object in awesome.

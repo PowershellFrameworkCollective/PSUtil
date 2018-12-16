@@ -1,4 +1,4 @@
-Describe "Validating the module manifest" {
+﻿Describe "Validating the module manifest" {
 	$moduleRoot = (Resolve-Path "$PSScriptRoot\..\..").Path
 	$manifest = ((Get-Content "$moduleRoot\PSUtil.psd1") -join "`n") | Invoke-Expression
 	Context "Basic resources validation" {

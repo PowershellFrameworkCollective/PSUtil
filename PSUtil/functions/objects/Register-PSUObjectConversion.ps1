@@ -37,10 +37,6 @@
 		$ScriptBlock
 	)
 	
-	begin
-	{
-		Write-PSFMessage -Level InternalComment -Message "Bound parameters: $($PSBoundParameters.Keys -join ", ")" -Tag 'debug', 'start', 'param'
-	}
 	process
 	{
 		$conversion = New-Object PSUtil.Object.ObjectConversionMapping -Property @{
@@ -50,10 +46,5 @@
 		}
 		
 		[PSUtil.Object.ObjectHost]::Conversions["$($From):$($To)".ToLower()] = $conversion
-		
-	}
-	end
-	{
-	
 	}
 }

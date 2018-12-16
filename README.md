@@ -1,4 +1,4 @@
-# PSUtil
+﻿# PSUtil
 
 The PSUtil module is designed to make the user's console life more convenient. It includes shortcuts, aliases, keybindings and convenience functions geared towards greater efficiency and less typing.
 

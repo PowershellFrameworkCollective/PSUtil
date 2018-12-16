@@ -30,6 +30,6 @@
 	
 	if ((-not (Test-Path alias:$name)) -and (Get-PSFConfigValue -FullName PSUtil.Import.Aliases.$name -Fallback $true))
 	{
-		New-Alias -Name $Name -Value $Command -Option AllScope -Force -Scope Global
+		New-Alias -Name $Name -Value $Command -Force -Scope Global
 	}
 }
