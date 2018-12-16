@@ -2,11 +2,11 @@
 $global:BannedCommands = @(
 	'Write-Host',
 	'Write-Verbose',
-	'Write-Debug',
 	'Write-Warning',
 	'Write-Error',
 	'Write-Output',
-	'Write-Information'
+	'Write-Information',
+	'Write-Debug'
 )
 
 <#
@@ -23,4 +23,5 @@ $global:MayContainCommand = @{
 	"Write-Error"  = @()
 	"Write-Output" = @()
 	"Write-Information" = @()
+	"Write-Debug" = @()
 }

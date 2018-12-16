@@ -1,4 +1,15 @@
-﻿# Changelog
+﻿# Changelog 2.0.0
+ - new: Command Get-PSUPathAlias lists all current path aliases
+ - new: Command Remove-PSUPathAlias removes a path alias
+ - new: Command Set-PSUPath used to implement the path alias functionality
+ - new: Command Set-PSUPathAlias creates or updates an alias for a path
+ - other: Major project refactoring
+ - rem: Command `Select-PSUObject` has been removed
+ - new: Alias `Select-PSUObject` pointing at `Select-PSFPobject`
+ - upd: Alias `ex` now points at `Export-PSFClixml`
+ - upd: Alias `ix` now points at `Import-PSFClixml`
+ - upd: Alias `spo` now points at `Select-PSFObject`
+ - upd: Moved the list of default properties to expand using Expand-PSUObject to configuration
 
 ## Version 1.1.5.17 (2018-06-19)
  - new: Command Select-PSUObject - Select-Object in awesome.

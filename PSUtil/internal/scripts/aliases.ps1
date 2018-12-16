@@ -8,8 +8,8 @@ Import-PSUAlias -Name "m" -Command "Measure-Object"
 Import-PSUAlias -Name "v" -Command "Get-Variable"
 
 # Add aliases for frequent export commands
-Import-PSUAlias -Name "ix" -Command "Import-Clixml"
-Import-PSUAlias -Name "ex" -Command "Export-Clixml"
+Import-PSUAlias -Name "ix" -Command "Import-PSFClixml"
+Import-PSUAlias -Name "ex" -Command "Export-PSFClixml"
 Import-PSUAlias -Name "ic" -Command "Import-Csv"
 Import-PSUAlias -Name "ec" -Command "Export-Csv"
 
@@ -18,3 +18,7 @@ Import-PSUAlias -Name "ocb" -Command "Set-Clipboard"
 
 # Add alias for creating object
 Import-PSUAlias -Name "new" -Command "New-Object"
+
+# Add alias for the better select and to avoid breaking on old command
+Import-PSUAlias -Name "spo" -Command "Select-PSFObject"
+Import-PSUAlias -Name "Select-PSUObject" -Command "Select-PSFObject"

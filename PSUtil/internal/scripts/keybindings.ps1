@@ -1,7 +1,7 @@
 ﻿if ((Get-PSFConfigValue -FullName "PSUtil.Import.Keybindings" -Fallback $true) -and (Get-Module PSReadline))
 {
-	foreach ($file in (Get-ChildItem -Path "$script:PSModuleRoot\internal\keybindings\"))
+	foreach ($file in (Get-ChildItem -Path (Join-PSFPath $script:ModuleRoot 'internal' 'keybindings')))
 	{
-		. Import-PSUFile -Path $file.FullName
+		. Import-ModuleFile -Path $file.FullName
 	}
 }

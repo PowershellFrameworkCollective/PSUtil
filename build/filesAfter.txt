@@ -1,0 +1,12 @@
+﻿# List all files that are loaded in the postimport.ps1
+# In the order they are loaded during postimport
+
+internal\tepp\*.tepp.ps1
+internal\tepp\assignment.ps1
+internal\scripts\license.ps1
+internal\scripts\expandedObjects.ps1
+internal\scripts\aliases.ps1
+internal\scripts\keybindings.ps1
+bin\type-aliases.ps1
+internal\scripts\license.ps1
+internal\scripts\conversions\*.ps1
