@@ -14,16 +14,21 @@
 		This is the path that you want your location to change to when the alias is called.
 
 	.PARAMETER Register
-        Causes PSUtil to remember the alias across sessions.
-        For more advanced options, see Register-PSFConfig.
+        	Causes PSUtil to remember the alias across sessions.
+        	For more advanced options, see Register-PSFConfig.
+		
+	.PARAMETER EnableException
+		This parameters disables user-friendly warnings and enables the throwing of exceptions.
+		This is less user friendly, but allows catching exceptions in calling scripts.
 
 	.EXAMPLE
-        PS C:\> Set-PSUPathAlias -Alias 'work' -Path 'C:\work'
-        Creates an alias to Set-PSUPath that will set the location to 'c:\work'
+        	PS C:\> Set-PSUPathAlias -Alias 'work' -Path 'C:\work'
+        	Creates an alias to Set-PSUPath that will set the location to 'c:\work'
 
-    .EXAMPLE
-        PS C:\> Set-PSUPathAlias -Alias 'repos' -Path 'C:\repos' -Register
-        Creates an alias for repos and registers the setting so that it will persist between sessions.
+    	.EXAMPLE
+        	PS C:\> Set-PSUPathAlias -Alias 'repos' -Path 'C:\repos' -Register
+		
+        	Creates an alias for repos and registers the setting so that it will persist between sessions.
 #>
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
     [CmdletBinding()]
@@ -38,7 +43,10 @@
         $Path,
 
         [switch]
-        $Register
+        $Register,
+	
+	[switch]
+	$EnableException
     )
 
     try {
