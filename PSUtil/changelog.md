@@ -1,4 +1,4 @@
-﻿# Changelog 2.0.0.0
+﻿# Changelog 2.0.0
  - new: Command Get-PSUPathAlias lists all current path aliases
  - new: Command Remove-PSUPathAlias removes a path alias
  - new: Command Set-PSUPath used to implement the path alias functionality
