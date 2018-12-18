@@ -1,5 +1,6 @@
 ﻿Set-PSFConfig -Module PSUtil -Name 'Import.Aliases.Grep' -Value $true -Initialize -Validation "bool" -Handler { } -Description "Whether the module will on import create an alias named 'grep' for Select-String"
 Set-PSFConfig -Module PSUtil -Name 'Import.Keybindings' -Value $true -Initialize -Validation "bool" -Handler { } -Description "Whether the module will on import register keybindings in PSReadline"
+Set-PSFConfig -Module PSUtil -Name 'Import.Alias.SystemOverride' -Value $false -Initialize -Validation "bool" -Description "Whether the module will on import pverwrite some default aliases with custom versions. Affects 'select'  and 'gm'"
 
 Set-PSFConfig -Module 'PSUtil' -Name 'Import.DoDotSource' -Value $false -Initialize -Validation 'bool' -Description "Whether the module files should be dotsourced on import. By default, the files of this module are read as string value and invoked, which is faster but worse on debugging."
 Set-PSFConfig -Module 'PSUtil' -Name 'Import.IndividualFiles' -Value $false -Initialize -Validation 'bool' -Description "Whether the module files should be imported individually. During the module build, all module code is compiled into few files, which are imported instead by default. Loading the compiled versions is faster, using the individual files is easier for debugging and testing out adjustments."
