@@ -1,4 +1,7 @@
 ﻿# Changelog
+## Version 2.0.4 (2018-12-23)
+ - Fix: Persisting default aliases redirection fails
+
 ## Version 2.0.3 (2018-12-23)
  - New: Configuration setting 'PSUtil.Import.Alias.SystemOverride'. Persisting this will have PSUtil replace system default aliases.
  - New: Tab Expansion for PowerShellGet
