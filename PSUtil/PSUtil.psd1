@@ -3,7 +3,7 @@
 	ModuleToProcess = 'PSUtil.psm1'
 	
 	# Version number of this module.
-	ModuleVersion = '2.0.0'
+	ModuleVersion = '2.0.3'
 	
 	# ID used to uniquely identify this module
 	GUID = '9ef51588-c40c-4064-910d-9b624b758cf6'
