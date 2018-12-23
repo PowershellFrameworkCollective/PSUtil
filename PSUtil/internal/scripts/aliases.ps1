@@ -22,3 +22,11 @@ Import-PSUAlias -Name "new" -Command "New-Object"
 # Add alias for the better select and to avoid breaking on old command
 Import-PSUAlias -Name "spo" -Command "Select-PSFObject"
 Import-PSUAlias -Name "Select-PSUObject" -Command "Select-PSFObject"
+
+if (Get-PSFConfigValue -FullName 'PSUtil.Import.Alias.SystemOverride')
+{
+	Remove-PSFAlias -Name select -Force
+	Remove-PSFAlias -Name gm -Force
+	Import-PSUAlias -Name select -Command 'Select-PSFObject'
+	Import-PSUAlias -Name gm -Command 'Get-PSMDMember'
+}
