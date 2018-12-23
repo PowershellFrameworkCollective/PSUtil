@@ -1,7 +1,8 @@
 ﻿# Changelog
-## Version 2.0.*
+## Version 2.0.3 (2018-12-23)
  - New: Configuration setting 'PSUtil.Import.Alias.SystemOverride'. Persisting this will have PSUtil replace system default aliases.
  - New: Tab Expansion for PowerShellGet
+ - New: Tab Expansion for Select-Object and Select-PSFObject
 
 ## Version 2.0.0 (2018-12-15)
  - new: Command Get-PSUPathAlias lists all current path aliases
