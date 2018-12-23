@@ -1,4 +1,9 @@
-﻿# Changelog 2.0.0
+﻿# Changelog
+## Version 2.0.*
+ - New: Configuration setting 'PSUtil.Import.Alias.SystemOverride'. Persisting this will have PSUtil replace system default aliases.
+ - New: Tab Expansion for PowerShellGet
+
+## Version 2.0.0 (2018-12-15)
  - new: Command Get-PSUPathAlias lists all current path aliases
  - new: Command Remove-PSUPathAlias removes a path alias
  - new: Command Set-PSUPath used to implement the path alias functionality
