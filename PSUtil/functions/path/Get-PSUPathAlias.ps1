@@ -25,11 +25,11 @@
 	
 	$aliases = Get-PSFConfig -FullName psutil.pathalias.$Alias
 	
-	foreach ($alias in $aliases)
+	foreach ($currentAlias in $aliases)
 	{
 		[pscustomobject]@{
-			Alias = ($alias.fullname -replace '^psutil.pathalias.')
-			Path  = $alias.value
+			Alias = ($currentAlias.fullname -replace '^psutil.pathalias.')
+			Path  = $currentAlias.value
 		}
 	}
 }
