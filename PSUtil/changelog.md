@@ -1,4 +1,10 @@
 ﻿# Changelog
+## Version 2.0.8 (2019-01-13)
+ - New: Keybinding for `Shift+SpaceBar` on PSReadline 2.0 that inserts a whitespace, helping to mitigate the typing issue in the windows release version.
+ - Upd: Switched input property tab completion to PSFramework implementation: PSFramework-Input-ObjectProperty
+ - Upd: Default keybinding for expanding aliases was changed to `Alt` + `q`. The previous one was inoperable under PSReadline 2.0 or later.
+ - Fix: Get-PSUPathAlias returns empty objects (thanks Corbob)
+
 ## Version 2.0.4 (2018-12-23)
  - Fix: Persisting default aliases redirection fails
 
