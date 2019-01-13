@@ -24,14 +24,10 @@ Register-PSFTeppArgumentCompleter -Command Unregister-PSRepository -Parameter Na
 Register-PSFTeppArgumentCompleter -Command Register-PSRepository -Parameter PackageManagementProvider -Name 'PSUtil-Module-PackageProvider'
 #endregion Module
 
-#region Select
-Register-PSFTeppArgumentCompleter -Command Select-PSFObject -Parameter Property -Name PSUtil-Input-Object
-Register-PSFTeppArgumentCompleter -Command Select-PSFObject -Parameter ExpandProperty -Name PSUtil-Input-Object
-Register-PSFTeppArgumentCompleter -Command Select-PSFObject -Parameter ExcludeProperty -Name PSUtil-Input-Object
-Register-PSFTeppArgumentCompleter -Command Select-PSFObject -Parameter ShowProperty -Name PSUtil-Input-Object
-Register-PSFTeppArgumentCompleter -Command Select-PSFObject -Parameter ShowExcludeProperty -Name PSUtil-Input-Object
+#region Input Object Property
+Register-PSFTeppArgumentCompleter -Command Select-Object -Parameter Property -Name PSFramework-Input-ObjectProperty
+Register-PSFTeppArgumentCompleter -Command Select-Object -Parameter ExpandProperty -Name PSFramework-Input-ObjectProperty
+Register-PSFTeppArgumentCompleter -Command Select-Object -Parameter ExcludeProperty -Name PSFramework-Input-ObjectProperty
 
-Register-PSFTeppArgumentCompleter -Command Select-Object -Parameter Property -Name PSUtil-Input-Object
-Register-PSFTeppArgumentCompleter -Command Select-Object -Parameter ExpandProperty -Name PSUtil-Input-Object
-Register-PSFTeppArgumentCompleter -Command Select-Object -Parameter ExcludeProperty -Name PSUtil-Input-Object
-#endregion Select
+Register-PSFTeppArgumentCompleter -Command Expand-PSUObject -Parameter Name -Name PSFramework-Input-ObjectProperty
+#endregion Input Object Property
