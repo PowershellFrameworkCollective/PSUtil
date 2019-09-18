@@ -10,7 +10,7 @@
 
 	.PARAMETER Alias
 		This is the name of the alias that called the command.
-        	Default Value is $MyInvocation.line and is detected automatically
+        Default Value is $MyInvocation.InvocationName and is detected automatically
 
 	.PARAMETER EnableException
 		Replaces user friendly yellow warnings with bloody red exceptions of doom!
@@ -27,49 +27,81 @@
 	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
 	[CmdletBinding()]
 	param (
-		$Alias = $MyInvocation.line,
+		[string]
+		$Alias = $MyInvocation.InvocationName,
 		
 		[switch]
 		$EnableException
 	)
 	
-	Write-PSFMessage -Level InternalComment -Message "Bound parameters: $($PSBoundParameters.Keys -join ", ")" -Tag 'debug', 'start', 'param'
-	try
+	begin
 	{
-		$PSFConfigPath = Get-PSFConfigValue -FullName psutil.pathalias.$Alias -NotNull
-	}
-	
-	catch
-	{
-		Stop-PSFFunction -Message "Unable to find a path setting for the alias" -Category InvalidOperation -Tag fail -Exception $_
-		return
-	}
-	
-	try
-	{
-		
-		if ($PSFConfigPath -contains '$env:')
+		function Resolve-PsuPath
 		{
-			Write-PSFMessage "Environmental variable detected, resolving path" -Level internalcomment
-			Set-Location (Resolve-Path $PSFConfigPath)
-		}
-		
-		else
-		{
-			Set-Location $PSFConfigPath
+			[OutputType([System.String])]
+			[CmdletBinding()]
+			param (
+				[string]
+				$Path
+			)
+			
+			$environ = @{}
+			foreach ($item in Get-ChildItem env:)
+			{
+				$environ[$item.Name] = $item.Value
+			}
+			$pattern = '%{0}%' -f ($environ.Keys -join '%|%')
+			$replacement = {
+				param (
+					[string]
+					$Match
+				)
+				$environ = @{ }
+				foreach ($item in Get-ChildItem env:)
+				{
+					$environ[$item.Name] = $item.Value
+				}
+				$environ[$Match.Trim('%')]
+			}
+			[regex]::Replace($Path, $pattern, $replacement, 'IgnoreCase')
 		}
 	}
-	catch
+	process
 	{
-		
-		$psfFuncParams = @{
-			Message = "Unable to set location to $PSFConfigPath"
-			Category = 'InvalidOperation'
-			Tag	    = 'fail'
-			ErrorRecord = $_
-			EnableException = $EnableException
+		try
+		{
+			$psfConfigPath = Get-PSFConfigValue -FullName psutil.pathalias.$Alias -NotNull
 		}
-		Stop-PSFFunction @psfFuncParams
-		return
+		
+		catch
+		{
+			$paramStopPSFFunction = @{
+				Message		    = "Unable to find a path setting for the alias"
+				Category	    = 'InvalidOperation'
+				Tag			    = 'fail'
+				ErrorRecord	    = $_
+				EnableException = $EnableException
+			}
+			
+			Stop-PSFFunction @paramStopPSFFunction
+			return
+		}
+		
+		try
+		{
+			Set-Location (Resolve-PsuPath -Path $psfConfigPath) -ErrorAction Stop
+		}
+		catch
+		{
+			$psfFuncParams = @{
+				EnableException = $EnableException
+				Message		    = "Unable to set location to $psfConfigPath"
+				Category	    = 'InvalidOperation'
+				Tag			    = 'fail'
+				ErrorRecord	    = $_
+			}
+			Stop-PSFFunction @psfFuncParams
+			return
+		}
 	}
 }

@@ -1,9 +1,9 @@
 ﻿@{
 	# Script module or binary module file associated with this manifest
-	ModuleToProcess = 'PSUtil.psm1'
+	RootModule = 'PSUtil.psm1'
 	
 	# Version number of this module.
-	ModuleVersion = '2.0.8'
+	ModuleVersion = '2.0.20'
 	
 	# ID used to uniquely identify this module
 	GUID = '9ef51588-c40c-4064-910d-9b624b758cf6'
@@ -26,7 +26,7 @@
 	# Modules that must be imported into the global environment prior to importing
 	# this module
 	RequiredModules = @(
-		@{ ModuleName='PSFramework'; ModuleVersion='0.10.31.176' }
+		@{ ModuleName='PSFramework'; ModuleVersion='1.0.35' }
 	)
 	
 	# Assemblies that must be loaded prior to importing this module
@@ -52,6 +52,7 @@
 		'Join-PSUString'
 		'New-PSUDirectory'
 		'Register-PSUObjectConversion'
+		'Register-PSUObjectExpansion'
 		'Remove-PSUPathAlias'
 		'Remove-PSUString'
 		'Select-PSUFunctionCode'
@@ -60,6 +61,7 @@
 		'Set-PSUObjectType'
 		'Set-PSUPath'
 		'Set-PSUPathAlias'
+		'Set-PSUPrompt'
 		'Set-PSUShell'
 		'Set-PSUString'
 		'Split-PSUString'
@@ -123,10 +125,10 @@
 			Tags = @('Utility')
 			
 			# A URL to the license for this module.
-			# LicenseUri = ''
+			LicenseUri = 'https://github.com/PowershellFrameworkCollective/PSUtil/blob/Development/LICENSE'
 			
 			# A URL to the main website for this project.
-			ProjectUri = 'http://psframework.org'
+			ProjectUri = 'https://psframework.org'
 			
 			# A URL to an icon representing this module.
 			# IconUri = ''

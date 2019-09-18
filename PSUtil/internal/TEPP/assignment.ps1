@@ -3,9 +3,12 @@
 Register-PSFTeppArgumentCompleter -Command Convert-PSUObject -Parameter From -Name psutil-convert-object-from
 Register-PSFTeppArgumentCompleter -Command Convert-PSUObject -Parameter To -Name psutil-convert-object-to
 
+Register-PSFTeppArgumentCompleter -Command Set-PSUPrompt -Parameter Prompt -Name 'psutil.prompt'
+
 #region Module
 Register-PSFTeppArgumentCompleter -Command Update-Module -Parameter Name -Name 'PSUtil-Module-Installed'
 Register-PSFTeppArgumentCompleter -Command Uninstall-Module -Parameter Name -Name 'PSUtil-Module-Installed'
+Register-PSFTeppArgumentCompleter -Command Get-InstalledModule -Parameter Name -Name 'PSUtil-Module-Installed'
 Register-PSFTeppArgumentCompleter -Command Install-Module -Parameter Name -Name 'PSUtil-Module-Total'
 
 Register-PSFTeppArgumentCompleter -Command Find-Command -Parameter Repository -Name 'PSUtil-Module-Repository'

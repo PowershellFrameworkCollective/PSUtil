@@ -48,15 +48,13 @@
 	
 	begin
 	{
-		Write-PSFMessage -Level InternalComment -Message "Bound parameters: $($PSBoundParameters.Keys -join ", ")" -Tag 'debug','start','param'
-		
-		if (-not ([PSUtil.Object.ObjectHost]::Conversions.ContainsKey("$($From):$($To)".ToLower())))
+		if (-not ([PSUtil.Object.ObjectHost]::Conversions.ContainsKey("$($From):$($To)")))
 		{
 			Stop-PSFFunction -Message "No conversion path configured for $From --> $To" -EnableException $EnableException -Category NotImplemented -Tag 'fail', 'input', 'convert'
 			return
 		}
 		
-		$scriptBlock = [System.Management.Automation.ScriptBlock]::Create([PSUtil.Object.ObjectHost]::Conversions["$($From):$($To)".ToLower()].Script)
+		$scriptBlock = [PSUtil.Object.ObjectHost]::Conversions["$($From):$($To)"].Script
 	}
 	process
 	{
@@ -64,16 +62,13 @@
 		
 		foreach ($item in $InputObject)
 		{
+			[PSFramework.Utility.UtilityHost]::ImportScriptBlock($scriptBlock)
 			try { $scriptBlock.Invoke($item) }
 			catch
 			{
 				Stop-PSFFunction -Message "Failed to convert $item from $From to $To" -EnableException $EnableException -ErrorRecord $_ -Target $item -Tag 'fail','convert','item' -Continue
 			}
 		}
-	}
-	end
-	{
-		if (Test-PSFFunctionInterrupt) { return }
 	}
 }
 Import-PSUAlias -Name convert -Command Convert-PSUObject

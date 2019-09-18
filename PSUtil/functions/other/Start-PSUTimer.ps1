@@ -15,18 +15,28 @@
 	.PARAMETER Message
 		What to wait for.
 	
+	.PARAMETER AlarmCount
+		How often to give warning.
+	
 	.PARAMETER NoProgress
 		Disables progress bar.
 	
 	.PARAMETER AlarmInterval
 		In what time interval to write warnings and send sound.
 	
-	.PARAMETER AlarmCount
-		How often to give warning.
+	.PARAMETER MinFrequency
+		The minimum frequency of the beeps.
+		Must be at least one lower than MaxFrequency.
+		Increase delta to play random frequency sounds on each beep.
+	
+	.PARAMETER MaxFrequency
+		The maximum frequency of the beeps.
+		Must be at least one higher than MaxFrequency.
+		Increase delta to play random frequency sounds on each beep.
 	
 	.EXAMPLE
 		PS C:\> timer 170 Tea
-	
+		
 		After 170 Duration give warning that the tea is ready.
 #>
 	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
@@ -40,6 +50,10 @@
 		[Parameter(Position = 1, Mandatory = $true)]
 		$Message,
 		
+		[Parameter(Position = 2)]
+		[int]
+		$AlarmCount = 25,
+		
 		[switch]
 		$NoProgress,
 		
@@ -47,13 +61,14 @@
 		$AlarmInterval = 250,
 		
 		[int]
-		$AlarmCount = 25
+		$MinFrequency = 2999,
+		
+		[int]
+		$MaxFrequency = 3000
 	)
 	
 	begin
 	{
-		Write-PSFMessage -Level InternalComment -Message "Bound parameters: $($PSBoundParameters.Keys -join ", ")" -Tag 'debug', 'start', 'param'
-		
 		$start = Get-Date
 		$end = $Duration.Value
 		
@@ -113,15 +128,11 @@
 		$countAlarm = 0
 		while ($countAlarm -lt $AlarmCount)
 		{
-			Write-PSFMessage -Level Warning -Message "### $($Message) ###"
-			[System.Console]::Beep(3000, $AlarmInterval)
+			Write-PSFHostColor -String "(<c='sub'>$countAlarm</c>) ### <c='em'>$($Message)</c> ###"
+			[System.Console]::Beep((Get-Random -Minimum $MinFrequency -Maximum $MaxFrequency), $AlarmInterval)
 			Start-Sleep -Milliseconds $AlarmInterval
 			$countAlarm++
 		}
-	}
-	end
-	{
-		
 	}
 }
 Import-PSUAlias -Name "timer" -Command "Start-PSUTimer"

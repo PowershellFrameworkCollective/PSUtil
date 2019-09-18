@@ -62,7 +62,7 @@
 	)
 	
 	# Test whether the PSReadline Module is loaded
-	$PSReadline = $null -ne (Get-Module PSReadline)
+	$PSReadline = Get-Module PSReadline
 	
 	#region Utility Functions
 	function Set-ShellWindowWidth
@@ -112,11 +112,19 @@
 	{
 		$host.ui.rawui.ForegroundColor = $ForegroundColor
 		
-		if ($PSReadline)
+		if ($PSReadline.Version.Major -eq 1)
 		{
 			Set-PSReadlineOption -ContinuationPromptForegroundColor $ForegroundColor
 			Set-PSReadlineOption -ForegroundColor $ForegroundColor -TokenKind 'Comment'
 			Set-PSReadlineOption -ForegroundColor $ForegroundColor -TokenKind None
+		}
+		elseif ($PSReadline.Version.Major -gt 1)
+		{
+			Set-PSReadLineOption -Colors @{
+				Default = $ForegroundColor
+				Comment = $ForegroundColor
+				ContinuationPrompt = $ForegroundColor
+			}
 		}
 	}
 	#endregion Set Foreground Color
@@ -125,7 +133,7 @@
 	if (Test-PSFParameterBinding -ParameterName "BackgroundColor")
 	{
 		$host.ui.rawui.BackgroundColor = $BackgroundColor
-		if ($PSReadline)
+		if ($PSReadline.Version.Major -eq 1)
 		{
 			Set-PSReadlineOption -ContinuationPromptBackgroundColor $BackgroundColor
 			Set-PSReadlineOption -BackgroundColor $BackgroundColor -TokenKind 'None'

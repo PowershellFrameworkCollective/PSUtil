@@ -1,4 +1,4 @@
-﻿function Prompt {
+﻿function global:Prompt {
 	$origLastExitCode = $LASTEXITCODE
 	Write-Host "[" -NoNewline
 	Write-Host (Get-Date -Format "HH:mm:ss") -ForegroundColor Gray -NoNewline

@@ -17,7 +17,7 @@ $global:BannedCommands = @(
 	"Write-Host"  = @('Write-PSFHostColor.ps1','Write-PSFMessage.ps1')
 #>
 $global:MayContainCommand = @{
-	"Write-Host"  = @("pretty.prompt.ps1", "hyper.prompt.ps1", "git.prompt.ps1")
+	"Write-Host"  = @('fred.prompt.ps1', "pretty.prompt.ps1", "hyper.prompt.ps1", "git.prompt.ps1")
 	"Write-Verbose" = @()
 	"Write-Warning" = @()
 	"Write-Error"  = @()
