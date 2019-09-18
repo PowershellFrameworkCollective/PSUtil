@@ -38,6 +38,7 @@
 	{
 		function Resolve-PsuPath
 		{
+			[OutputType([System.String])]
 			[CmdletBinding()]
 			param (
 				[string]

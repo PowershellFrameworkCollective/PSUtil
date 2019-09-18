@@ -8,7 +8,7 @@
 		Registers a custom scriptblock for a type when processed by Expand-PSUObject.
 	
 		Expand-PSUObject enables accelerated object expansion,
-		by shortening the "Select-Object -ExpandProperty" call to "exp". 
+		by shortening the "Select-Object -ExpandProperty" call to "exp".
 		It further has a list of default properties to expand,
 		but it also allows implementing custom expansion rules, based on input type.
 		
