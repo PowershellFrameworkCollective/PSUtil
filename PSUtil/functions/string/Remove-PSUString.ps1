@@ -43,7 +43,6 @@
 		$End
 	)
 	
-	begin { }
 	process
 	{
 		foreach ($line in $InputString)
@@ -53,6 +52,5 @@
 			else { $line.Trim($What) }
 		}
 	}
-	end { }
 }
 Import-PSUAlias -Name trim -Command Remove-PSUString

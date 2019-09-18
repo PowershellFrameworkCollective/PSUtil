@@ -31,13 +31,14 @@ Set-PSReadlineKeyHandler -Chord (Get-PSFConfigValue -FullName psutil.keybinding.
 			# Get Help
 			if ($commandName -ne $null)
 			{
+				$application = (Get-Process -Id $PID).Path
 				# Call help based on preference
 				switch (Get-PSFConfigValue -FullName 'PSUtil.Help.Preference' -Fallback ([PSUtil.Configuration.HelpOption]::Window))
 				{
-					"short" { Start-Process powershell.exe -ArgumentList "-NoExit -Command Get-Help $commandName" }
-					"detailed" { Start-Process powershell.exe -ArgumentList "-NoExit -Command Get-Help $commandName -Detailed" }
-					"examples" { Start-Process powershell.exe -ArgumentList "-NoExit -Command Get-Help $commandName -Examples" }
-					"full" { Start-Process powershell.exe -ArgumentList "-NoExit -Command Get-Help $commandName -Full" }
+					"short" { Start-Process $application -ArgumentList "-NoExit -Command Get-Help $commandName" }
+					"detailed" { Start-Process $application -ArgumentList "-NoExit -Command Get-Help $commandName -Detailed" }
+					"examples" { Start-Process $application -ArgumentList "-NoExit -Command Get-Help $commandName -Examples" }
+					"full" { Start-Process $application -ArgumentList "-NoExit -Command Get-Help $commandName -Full" }
 					"online" { Get-Help $commandName -Online }
 					"window" { Get-Help $commandName -ShowWindow }
 					default { Get-Help $commandName -ShowWindow }

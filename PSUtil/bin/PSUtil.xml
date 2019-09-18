@@ -89,32 +89,291 @@
             List of registered conversions
             </summary>
         </member>
-        <member name="T:PSUtil.Parameter.SelectParameter">
+        <member name="T:PSUtil.Utility.PsuTimeSpan">
             <summary>
-            Class that automatically parses input chosen for the -Property parameter of Select-PSUObject
+            Wrapper class for a regular timespan. Copied from dbatools
             </summary>
         </member>
-        <member name="F:PSUtil.Parameter.SelectParameter.InputObject">
+        <member name="P:PSUtil.Utility.PsuTimeSpan.Days">
             <summary>
-            The original input object
+            Gets the days component of the time interval represented by the current TimeSpan structure.
             </summary>
         </member>
-        <member name="F:PSUtil.Parameter.SelectParameter.Value">
+        <member name="P:PSUtil.Utility.PsuTimeSpan.Hours">
             <summary>
-            The value as Select-Object wants it
+            Gets the hours component of the time interval represented by the current TimeSpan structure.
             </summary>
         </member>
-        <member name="M:PSUtil.Parameter.SelectParameter.#ctor(System.String)">
+        <member name="P:PSUtil.Utility.PsuTimeSpan.Milliseconds">
             <summary>
-            Builds a property parameter from string
+            Gets the milliseconds component of the time interval represented by the current TimeSpan structure.
+            </summary>
+        </member>
+        <member name="P:PSUtil.Utility.PsuTimeSpan.Minutes">
+            <summary>
+            Gets the minutes component of the time interval represented by the current TimeSpan structure.
+            </summary>
+        </member>
+        <member name="P:PSUtil.Utility.PsuTimeSpan.Seconds">
+            <summary>
+            Gets the seconds component of the time interval represented by the current TimeSpan structure.
+            </summary>
+        </member>
+        <member name="P:PSUtil.Utility.PsuTimeSpan.Ticks">
+            <summary>
+            Gets the number of ticks that represent the value of the current TimeSpan structure.
+            </summary>
+        </member>
+        <member name="P:PSUtil.Utility.PsuTimeSpan.TotalDays">
+            <summary>
+            Gets the value of the current TimeSpan structure expressed in whole and fractional days.
+            </summary>
+        </member>
+        <member name="P:PSUtil.Utility.PsuTimeSpan.TotalHours">
+            <summary>
+            Gets the value of the current TimeSpan structure expressed in whole and fractional hours.
+            </summary>
+        </member>
+        <member name="P:PSUtil.Utility.PsuTimeSpan.TotalMilliseconds">
+            <summary>
+            Gets the value of the current TimeSpan structure expressed in whole and fractional milliseconds.
+            </summary>
+        </member>
+        <member name="P:PSUtil.Utility.PsuTimeSpan.TotalMinutes">
+            <summary>
+            Gets the value of the current TimeSpan structure expressed in whole and fractional minutes.
+            </summary>
+        </member>
+        <member name="P:PSUtil.Utility.PsuTimeSpan.TotalSeconds">
+            <summary>
+            Gets the value of the current TimeSpan structure expressed in whole and fractional seconds.
+            </summary>
+        </member>
+        <member name="M:PSUtil.Utility.PsuTimeSpan.#ctor(System.TimeSpan)">
+            <summary>
+            
+            </summary>
+            <param name="Timespan"></param>
+        </member>
+        <member name="M:PSUtil.Utility.PsuTimeSpan.#ctor(System.String)">
+            <summary>
+            Converts a string into a timespan
+            </summary>
+            <param name="Timespan">The string to convert</param>
+        </member>
+        <member name="M:PSUtil.Utility.PsuTimeSpan.#ctor(System.Int64)">
+            <summary>
+            
+            </summary>
+            <param name="ticks"></param>
+        </member>
+        <member name="M:PSUtil.Utility.PsuTimeSpan.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="hours"></param>
+            <param name="minutes"></param>
+            <param name="seconds"></param>
+        </member>
+        <member name="M:PSUtil.Utility.PsuTimeSpan.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="days"></param>
+            <param name="hours"></param>
+            <param name="minutes"></param>
+            <param name="seconds"></param>
+        </member>
+        <member name="M:PSUtil.Utility.PsuTimeSpan.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="days"></param>
+            <param name="hours"></param>
+            <param name="minutes"></param>
+            <param name="seconds"></param>
+            <param name="milliseconds"></param>
+        </member>
+        <member name="M:PSUtil.Utility.PsuTimeSpan.ParseTimeSpan(System.String)">
+            <summary>
+            Parses an input string as timespan
             </summary>
             <param name="Value">The string to interpret</param>
+            <returns>The interpreted timespan value</returns>
         </member>
-        <member name="M:PSUtil.Parameter.SelectParameter.#ctor(System.Collections.Hashtable)">
+        <member name="M:PSUtil.Utility.PsuTimeSpan.Add(System.TimeSpan)">
             <summary>
-            Builds a select parameter from a hashtable (pretty straightforward)
+            
             </summary>
-            <param name="Hash">The hashtable to accept</param>
+            <param name="ts"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PSUtil.Utility.PsuTimeSpan.CompareTo(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PSUtil.Utility.PsuTimeSpan.CompareTo(System.TimeSpan)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PSUtil.Utility.PsuTimeSpan.CompareTo(PSUtil.Utility.PsuTimeSpan)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PSUtil.Utility.PsuTimeSpan.Duration">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PSUtil.Utility.PsuTimeSpan.Equals(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PSUtil.Utility.PsuTimeSpan.Equals(System.TimeSpan)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PSUtil.Utility.PsuTimeSpan.GetBaseObject">
+            <summary>
+            Returns the wrapped base object
+            </summary>
+            <returns>The base object</returns>
+        </member>
+        <member name="M:PSUtil.Utility.PsuTimeSpan.GetHashCode">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PSUtil.Utility.PsuTimeSpan.Negate">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PSUtil.Utility.PsuTimeSpan.Subtract(System.TimeSpan)">
+            <summary>
+            
+            </summary>
+            <param name="ts"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PSUtil.Utility.PsuTimeSpan.ToString">
+            <summary>
+            Returns the default string representation of the TimeSpan object
+            </summary>
+            <returns>The string representation of the DbaTimeSpan object</returns>
+        </member>
+        <member name="M:PSUtil.Utility.PsuTimeSpan.ToString(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="format"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PSUtil.Utility.PsuTimeSpan.ToString(System.String,System.IFormatProvider)">
+            <summary>
+            
+            </summary>
+            <param name="format"></param>
+            <param name="formatProvider"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PSUtil.Utility.PsuTimeSpan.op_Implicit(PSUtil.Utility.PsuTimeSpan)~System.TimeSpan">
+            <summary>
+            Implicitly converts a DbaTimeSpan object into a TimeSpan object
+            </summary>
+            <param name="Base">The original object to revert</param>
+        </member>
+        <member name="M:PSUtil.Utility.PsuTimeSpan.op_Implicit(System.TimeSpan)~PSUtil.Utility.PsuTimeSpan">
+            <summary>
+            Implicitly converts a TimeSpan object into a DbaTimeSpan object
+            </summary>
+            <param name="Base">The original object to wrap</param>
+        </member>
+        <member name="T:PSUtil.Utility.PsuTimeSpanPretty">
+            <summary>
+            HUmanly friendly representation of a timespan
+            </summary>
+        </member>
+        <member name="M:PSUtil.Utility.PsuTimeSpanPretty.FromMilliseconds(System.Double)">
+            <summary>
+            Creates a new, pretty timespan object from milliseconds
+            </summary>
+            <param name="Milliseconds">The milliseconds to convert from.</param>
+            <returns>A pretty timespan object</returns>
+        </member>
+        <member name="F:PSUtil.Utility.PsuTimeSpanPretty.Digits">
+            <summary>
+            The number of digits a pretty timespan should round to.
+            </summary>
+        </member>
+        <member name="M:PSUtil.Utility.PsuTimeSpanPretty.#ctor(System.TimeSpan)">
+            <summary>
+            
+            </summary>
+            <param name="Timespan"></param>
+        </member>
+        <member name="M:PSUtil.Utility.PsuTimeSpanPretty.#ctor(System.String)">
+            <summary>
+            Converts a string into a timespan
+            </summary>
+            <param name="Timespan">The string to convert</param>
+        </member>
+        <member name="M:PSUtil.Utility.PsuTimeSpanPretty.#ctor(System.Int64)">
+            <summary>
+            
+            </summary>
+            <param name="ticks"></param>
+        </member>
+        <member name="M:PSUtil.Utility.PsuTimeSpanPretty.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="hours"></param>
+            <param name="minutes"></param>
+            <param name="seconds"></param>
+        </member>
+        <member name="M:PSUtil.Utility.PsuTimeSpanPretty.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="days"></param>
+            <param name="hours"></param>
+            <param name="minutes"></param>
+            <param name="seconds"></param>
+        </member>
+        <member name="M:PSUtil.Utility.PsuTimeSpanPretty.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="days"></param>
+            <param name="hours"></param>
+            <param name="minutes"></param>
+            <param name="seconds"></param>
+            <param name="milliseconds"></param>
+        </member>
+        <member name="M:PSUtil.Utility.PsuTimeSpanPretty.ToString">
+            <summary>
+            Creates extra-nice timespan formats
+            </summary>
+            <returns>Humanly readable timespans</returns>
         </member>
     </members>
 </doc>

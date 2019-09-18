@@ -1,4 +1,18 @@
 ﻿# Changelog
+## 2.0.20 (2019-09-18)
+ - New: Command: Set-PSUPrompt - Applies a prompt from a set of pre-defined prompts
+ - New: COmmand: Register-PSUObjectExpansion - Registers custom expansion rules for Expand-PSUObject
+ - Upd: Start-PSUTimer - Added -MinFrequency and -MaxFrequency parameters.
+ - Upd: Start-PSUTimer - Refactored parameter order, rationalized message handling
+ - Upd: Invoke-PSUExplorer - Enabled opt-in exceptions and improved path resolution
+ - Upd: Set-PSUPath - Now supports environment variable expansion using %name% notation.
+ - Fix: Importing module from UNC path works
+ - Fix: Module import concurrency issue
+ - Fix: Convert-PSUObject unsafe Scriptblock handling
+ - Fix: Set-PSUShell foreground color handling (requires latest pre-release version of PSReadline)
+ - Fix: F1 Keybinding: On non-windows default to detailed help, rather than -ShowWindow
+ - Fix: F1 Keybinding: In-Console help display now uses same application as launching application
+
 ## Version 2.0.8 (2019-01-13)
  - New: Keybinding for `Shift+SpaceBar` on PSReadline 2.0 that inserts a whitespace, helping to mitigate the typing issue in the windows release version.
  - Upd: Switched input property tab completion to PSFramework implementation: PSFramework-Input-ObjectProperty

@@ -103,6 +103,5 @@
 			}
 		}
 	}
-	end { }
 }
 Import-PSUAlias -Name replace -Command Set-PSUString

@@ -19,6 +19,10 @@
 		Setting this switch will cause the function to open the same folder multiple times, if it was passed multiple times.
 		By default, the function will not open the same folder multiple times (a dir of a directory with multiple files would otherwise cause multiple open windows).
 	
+	.PARAMETER EnableException
+		This parameters disables user-friendly warnings and enables the throwing of exceptions.
+		This is less user friendly, but allows catching exceptions in calling scripts.
+	
 	.EXAMPLE
 		PS C:\> dir | Explorer
 		
@@ -35,53 +39,54 @@
 		$Module,
 		
 		[switch]
-		$Duplicates
+		$Duplicates,
+		
+		[switch]
+		$EnableException
 	)
 	
 	Begin {
-		Write-PSFMessage -Level Debug -Message "Opening Windows Explorer at target path(s)" -Tag start
-		
 		# Contains previously opened folders
 		$List = @()
 	}
 	Process {
-		foreach ($Item in $Path) {
-			$resolvedPath = Resolve-Path $Item
+		foreach ($item in $Path)
+		{
+			try { $resolvedPaths = Resolve-PSFPath -Path $item -Provider FileSystem }
+			catch { Stop-PSFFunction -Message "Path not found: $item" -EnableException $EnableException -ErrorRecord $_ -Continue -Tag input -Target $item }
 			
-			if (-not (Test-Path $resolvedPath))
+			foreach ($resolvedPath in $resolvedPaths)
 			{
-				Stop-PSFFunction -Message "Path not found: $resolvedPath | $Item" -Continue -Category InvalidArgument -Tag input -Target $Item
+				
+				$object = Get-Item $resolvedPath
+				
+				if ($object.PSIsContainer) { $finalPath = $object.FullName }
+				else { $finalPath = $object.Directory.FullName }
+				
+				# If it was already opened once, skip it unless duplicates are enabled
+				if ((-not $Duplicates) -and ($List -contains $finalPath))
+				{
+					Write-PSFMessage -Level Verbose -Message "Skipping folder since it already was opened once: $finalPath" -Target $item -Tag skip
+					continue
+				}
+				
+				Write-PSFMessage -Level Verbose -Message "Opening explorer at: $finalPath"
+				explorer.exe $finalPath
+				$List += $finalPath
 			}
-			
-			$object = Get-Item $resolvedPath
-			
-			if ($object.PSIsContainer) { $finalPath = $object.FullName }
-			else { $finalPath = $object.Directory.FullName }
-			
-			# If it was already opened once, skip it unless duplicates are enabled
-			if ((-not $Duplicates) -and ($List -contains $finalPath))
-			{
-				Write-PSFMessage -Level Verbose -Message "Skipping folder since it already was opened once: $finalPath" -Target $Item -Tag skip
-				continue
-			}
-			
-			explorer.exe $finalPath
-			$List += $finalPath
 		}
 		
-		foreach ($Item in $Module)
+		foreach ($item in $Module)
 		{
-			if ((-not $Duplicates) -and ($List -contains $Item.ModuleBase))
+			if ((-not $Duplicates) -and ($List -contains $item.ModuleBase))
 			{
-				Write-PSFMessage -Level Verbose -Message "Skipping folder since it already was opened once: $($Item.ModuleBase)" -Target $Item -Tag skip
+				Write-PSFMessage -Level Verbose -Message "Skipping folder since it already was opened once: $($item.ModuleBase)" -Target $item -Tag skip
 				continue
 			}
-			explorer.exe $Item.ModuleBase
-			$List += $Item.ModuleBase
+			Write-PSFMessage -Level Verbose -Message "Opening explorer at: $($item.ModuleBase)"
+			explorer.exe $item.ModuleBase
+			$List += $item.ModuleBase
 		}
-	}
-	End {
-		Write-PSFMessage -Level Debug -Message "Opening Windows Explorer at target path(s)" -Tag end
 	}
 }
 Import-PSUAlias -Name "explorer" -Command "Invoke-PSUExplorer"

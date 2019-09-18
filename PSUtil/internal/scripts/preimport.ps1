@@ -1,10 +1,10 @@
 ﻿# Add all things you want to run before importing the main code
-foreach ($function in (Get-ChildItem (Join-PSFPath $script:ModuleRoot 'internal' 'configurations' 'validations')))
+foreach ($file in (Get-ChildItem "$script:ModuleRoot\internal\configurations\validations" -Filter '*.ps1'))
 {
-	. Import-ModuleFile -Path $function.FullName
+	. Import-ModuleFile -Path $file.FullName
 }
 
-foreach ($function in (Get-ChildItem (Join-PSFPath $script:ModuleRoot 'internal' 'configurations' '*.ps1')))
+foreach ($file in (Get-ChildItem "$script:ModuleRoot\internal\configurations" -Filter '*.ps1'))
 {
-	. Import-ModuleFile -Path $function.FullName
+	. Import-ModuleFile -Path $file.FullName
 }
