@@ -1,15 +1,15 @@
 ﻿Register-PSFTeppScriptBlock -Name 'PSUtil-Module-Installed' -ScriptBlock {
-	(Get-InstalledModule).Name | Select-Object -Unique
+	(Get-PSFTaskEngineCache -Module PSUtil -Name Module).InstalledModules
 }
 
 Register-PSFTeppScriptBlock -Name 'PSUtil-Module-Total' -ScriptBlock {
-	(Get-Module -ListAvailable).Name | Select-Object -Unique
+	(Get-PSFTaskEngineCache -Module PSUtil -Name Module).AvailableModules
 }
 
 Register-PSFTeppScriptblock -Name 'PSUtil-Module-Repository' -ScriptBlock {
-	(Get-PSRepository).Name
+	(Get-PSFTaskEngineCache -Module PSUtil -Name Module).Repositories
 }
 
 Register-PSFTeppScriptblock -Name 'PSUtil-Module-PackageProvider' -ScriptBlock {
-	(Get-PackageProvider).Name
+	(Get-PSFTaskEngineCache -Module PSUtil -Name Module).PackageProvider
 }

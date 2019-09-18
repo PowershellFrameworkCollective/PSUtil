@@ -68,9 +68,9 @@
 	{
 		Write-PSFMessage -Level InternalComment -Message "Bound parameters: $($PSBoundParameters.Keys -join ", ")" -Tag 'debug', 'start', 'param'
 		
-		if ($PSVersionTable.PSVersion.Major -ge 6)
+		if (Test-PSFPowerShell -PSMinVersion '6.0' -PSMaxVersion '6.9.9')
 		{
-			Stop-PSFFunction -Message "This command is not supported on PowerShell v6 or later!" -Category NotEnabled -Tag fail, ps6
+			Stop-PSFFunction -Message "This command is not supported on PowerShell v6 due to lack of GUI elements!" -Category NotEnabled -Tag fail, ps6
 			return
 		}
 		
@@ -147,17 +147,17 @@
 		# This is the default behavior with no params
 		if (-not ($NoWait -or $PassThru))
 		{
-			$data = $FinalArray | Out-GridView -PassThru -Title 'Select-PSFunctionCode' | Expand-PSUObject text
+			$data = $FinalArray | Out-GridView -PassThru -Title 'Select-PSUFunctionCode' | Expand-PSUObject text
 			if ($data) { $data | Set-Clipboard }
 		}
 		
 		if ($NoWait)
 		{
-			$FinalArray | Out-GridView -Title 'Select-PSFunctionCode'
+			$FinalArray | Out-GridView -Title 'Select-PSUFunctionCode'
 		}
 		if ($PassThru)
 		{
-			$FinalArray | Out-GridView -PassThru -Title 'Select-PSFunctionCode'
+			$FinalArray | Out-GridView -PassThru -Title 'Select-PSUFunctionCode'
 		}
 	}
 }

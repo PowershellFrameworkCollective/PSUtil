@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Collections.Concurrent;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PSUtil.Object
 {
@@ -15,11 +12,11 @@ namespace PSUtil.Object
         /// <summary>
         /// Dictionary of types for which special expansion has been prepared.
         /// </summary>
-        public static Dictionary<string, ScriptBlock> ExpandedTypes = new Dictionary<string, ScriptBlock>();
+        public static ConcurrentDictionary<string, ScriptBlock> ExpandedTypes = new ConcurrentDictionary<string, ScriptBlock>(StringComparer.InvariantCultureIgnoreCase);
 
         /// <summary>
         /// List of registered conversions
         /// </summary>
-        public static Dictionary<string, ObjectConversionMapping> Conversions = new Dictionary<string, ObjectConversionMapping>();
+        public static ConcurrentDictionary<string, ObjectConversionMapping> Conversions = new ConcurrentDictionary<string, ObjectConversionMapping>(StringComparer.InvariantCultureIgnoreCase);
     }
 }

@@ -40,11 +40,11 @@
 	process
 	{
 		$conversion = New-Object PSUtil.Object.ObjectConversionMapping -Property @{
-			From   = $From.ToLower()
-			To     = $To.ToLower()
+			From   = $From
+			To     = $To
 			Script = $ScriptBlock
 		}
 		
-		[PSUtil.Object.ObjectHost]::Conversions["$($From):$($To)".ToLower()] = $conversion
+		[PSUtil.Object.ObjectHost]::Conversions["$($From):$($To)"] = $conversion
 	}
 }

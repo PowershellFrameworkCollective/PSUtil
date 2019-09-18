@@ -1,4 +1,4 @@
-﻿function prompt
+﻿function global:prompt
 {
 	#region Helpers
 	function frame
