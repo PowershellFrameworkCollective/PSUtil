@@ -1,4 +1,6 @@
-﻿# Add all things you want to run before importing the main code
+﻿. Import-ModuleFile -Path "$script:ModuleRoot\internal\scripts\strings.ps1"
+
+# Add all things you want to run before importing the main code
 foreach ($file in (Get-ChildItem "$script:ModuleRoot\internal\configurations\validations" -Filter '*.ps1'))
 {
 	. Import-ModuleFile -Path $file.FullName
