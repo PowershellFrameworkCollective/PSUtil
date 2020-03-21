@@ -21,7 +21,7 @@ $global:MayContainCommand = @{
 	"Write-Verbose" = @()
 	"Write-Warning" = @()
 	"Write-Error"  = @()
-	"Write-Output" = @()
+	"Write-Output" = @('Out-PSUVariable.ps1')
 	"Write-Information" = @()
 	"Write-Debug" = @()
 }

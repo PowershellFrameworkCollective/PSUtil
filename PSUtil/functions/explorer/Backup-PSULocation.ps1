@@ -28,7 +28,7 @@
 		$Levels = (Get-PSFConfigValue -FullName 'PSUtil.Path.BackupStepsDefault' -Fallback 1)
 	)
 	
-	Set-Location -Path (,".." * $Levels | Join-PSUString -With ([System.IO.Path]::DirectorySeparatorChar))
+	Set-Location -Path (,".." * $Levels | Join-String -With ([System.IO.Path]::DirectorySeparatorChar))
 }
 
 Import-PSUAlias -Name "bu" -Command "Backup-PSULocation"

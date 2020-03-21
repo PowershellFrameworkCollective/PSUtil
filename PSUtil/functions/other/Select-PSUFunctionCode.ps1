@@ -93,7 +93,7 @@
 				{
 					if ($command.ResolvedCommand.CommandType -eq "Function")
 					{
-						$functionText = $command.ResolvedCommand | Expand-PSUObject | Split-PSUString "`n"
+						$functionText = $command.ResolvedCommand | Expand-PSUObject | Split-String "`n"
 					}
 					else
 					{
@@ -102,7 +102,7 @@
 				}
 				'Function'
 				{
-					$functionText = $command | Expand-PSUObject | Split-PSUString "`n"
+					$functionText = $command | Expand-PSUObject | Split-String "`n"
 				}
 				default
 				{

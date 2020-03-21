@@ -63,7 +63,6 @@
 		'Set-PSUPathAlias'
 		'Set-PSUPrompt'
 		'Set-PSUShell'
-		'Split-PSUString'
 		'Start-PSUTimer'
 		'Write-PSUKnowledge'
 	)
