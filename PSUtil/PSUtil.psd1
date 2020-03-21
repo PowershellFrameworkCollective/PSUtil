@@ -26,7 +26,8 @@
 	# Modules that must be imported into the global environment prior to importing
 	# this module
 	RequiredModules = @(
-		@{ ModuleName='PSFramework'; ModuleVersion='1.0.35' }
+		@{ ModuleName = 'PSFramework'; ModuleVersion = '1.1.59' }
+		@{ ModuleName = 'string'; ModuleVersion = '0.6.1' }
 	)
 	
 	# Assemblies that must be loaded prior to importing this module
@@ -36,25 +37,24 @@
 	# TypesToProcess = @('xml\PSUtil.Types.ps1xml')
 	
 	# Format files (.ps1xml) to be loaded when importing this module
-	# FormatsToProcess = @('xml\PSUtil.Format.ps1xml')
+	FormatsToProcess = @('xml\PSUtil.Format.ps1xml')
 	
 	# Functions to export from this module
 	FunctionsToExport  = @(
-		'Add-PSUString'
 		'Backup-PSULocation'
 		'Convert-PSUObject'
 		'Expand-PSUObject'
-		'Format-PSUString'
 		'Get-PSUPathAlias'
 		'Invoke-PSUDesktop'
 		'Invoke-PSUExplorer'
 		'Invoke-PSUTemp'
-		'Join-PSUString'
 		'New-PSUDirectory'
+		'Out-PSUVariable'
 		'Register-PSUObjectConversion'
 		'Register-PSUObjectExpansion'
+		'Read-PSUKnowledge'
+		'Remove-PSUKnowledge'
 		'Remove-PSUPathAlias'
-		'Remove-PSUString'
 		'Select-PSUFunctionCode'
 		'Select-PSUObjectSample'
 		'Set-PSUDrive'
@@ -63,9 +63,8 @@
 		'Set-PSUPathAlias'
 		'Set-PSUPrompt'
 		'Set-PSUShell'
-		'Set-PSUString'
-		'Split-PSUString'
 		'Start-PSUTimer'
+		'Write-PSUKnowledge'
 	)
 	
 	# Cmdlets to export from this module
@@ -76,36 +75,50 @@
 	
 	# Aliases to export from this module
 	AliasesToExport    = @(
-		'a',
-		'add',
-		'bu',
-		'c',
-		'cast',
-		'convert',
-		'desktop',
-		'ec',
-		'ex',
-		'exp',
-		'explorer',
-		'format',
-		'grep',
-		'ic',
-		'inspect',
-		'ix',
-		'join',
-		'm',
-		'mcd',
-		'new',
-		'ocb',
-		'replace',
-		's',
-		'set-as',
-		'split',
-		'spo',
-		'temp',
-		'timer',
-		'trim',
-		'v',
+		'a'
+		'add'
+		'Add-PSUString'
+		'bu'
+		'c'
+		'cast'
+		'cfj'
+		'convert'
+		'ctj'
+		'desktop'
+		'ec'
+		'ex'
+		'exp'
+		'explorer'
+		'format'
+		'Format-PSUString'
+		'grep'
+		'ic'
+		'inspect'
+		'ix'
+		'join'
+		'Join-PSUString'
+		'learn'
+		'm'
+		'mcd'
+		'new'
+		'ocb'
+		'ov'
+		'page'
+		'rdk'
+		'read'
+		'Remove-PSUString'
+		'replace'
+		's'
+		'Select-PSUObject'
+		'set-as'
+		'Set-PSUString'
+		'split'
+		'Split-PSUString'
+		'spo'
+		'temp'
+		'timer'
+		'trim'
+		'v'
 		'wrap'
 	)
 	

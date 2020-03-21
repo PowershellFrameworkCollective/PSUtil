@@ -1,5 +1,6 @@
 ﻿# List all files that are loaded in the preimport.ps1
 # In the order they are loaded during preimport
 
+internal\scripts\strings.ps1
 internal\configurations\validations\*
 internal\configurations\*.ps1
