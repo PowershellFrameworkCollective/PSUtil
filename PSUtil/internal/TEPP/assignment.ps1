@@ -33,4 +33,20 @@ Register-PSFTeppArgumentCompleter -Command Select-Object -Parameter ExpandProper
 Register-PSFTeppArgumentCompleter -Command Select-Object -Parameter ExcludeProperty -Name PSFramework-Input-ObjectProperty
 
 Register-PSFTeppArgumentCompleter -Command Expand-PSUObject -Parameter Name -Name PSFramework-Input-ObjectProperty
+
+Register-PSFTeppArgumentCompleter -Command Get-Member -Parameter Name -Name PSFramework-Input-ObjectProperty
+Register-PSFTeppArgumentCompleter -Command Format-Table -Parameter Property -Name PSFramework-Input-ObjectProperty
+Register-PSFTeppArgumentCompleter -Command Format-List -Parameter Property -Name PSFramework-Input-ObjectProperty
+Register-PSFTeppArgumentCompleter -Command Group-Object -Parameter Property -Name PSFramework-Input-ObjectProperty
+Register-PSFTeppArgumentCompleter -Command Measure-Object -Parameter Property -Name PSFramework-Input-ObjectProperty
+Register-PSFTeppArgumentCompleter -Command Sort-Object -Parameter Property -Name PSFramework-Input-ObjectProperty
+Register-PSFTeppArgumentCompleter -Command Where-Object -Parameter Property -Name PSFramework-Input-ObjectProperty
 #endregion Input Object Property
+
+Register-PSFTeppArgumentCompleter -Command Read-PSUKnowledge -Parameter Book -Name 'PSUtil.Knowledge.Book'
+Register-PSFTeppArgumentCompleter -Command Read-PSUKnowledge -Parameter Name -Name 'PSUtil.Knowledge.Page'
+Register-PSFTeppArgumentCompleter -Command Read-PSUKnowledge -Parameter Tags -Name 'PSUtil.Knowledge.Tags'
+Register-PSFTeppArgumentCompleter -Command Remove-PSUKnowledge -Parameter Book -Name 'PSUtil.Knowledge.Book'
+Register-PSFTeppArgumentCompleter -Command Remove-PSUKnowledge -Parameter Name -Name 'PSUtil.Knowledge.Page'
+Register-PSFTeppArgumentCompleter -Command Write-PSUKnowledge -Parameter Book -Name 'PSUtil.Knowledge.Book'
+Register-PSFTeppArgumentCompleter -Command Write-PSUKnowledge -Parameter Tags -Name 'PSUtil.Knowledge.Tags'

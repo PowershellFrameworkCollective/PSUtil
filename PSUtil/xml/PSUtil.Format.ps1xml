@@ -1,31 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-16"?>
 <Configuration>
 	<ViewDefinitions>
-		<!-- Foo.Bar -->
+		<!-- PSUtil.Knowledge.Page -->
 		<View>
-			<Name>Foo.Bar</Name>
+			<Name>PSUtil.Knowledge.Page</Name>
 			<ViewSelectedBy>
-				<TypeName>Foo.Bar</TypeName>
+				<TypeName>PSUtil.Knowledge.Page</TypeName>
 			</ViewSelectedBy>
-			<TableControl>
-				<AutoSize/>
-				<TableHeaders>
-					<TableColumnHeader/>
-					<TableColumnHeader/>
-				</TableHeaders>
-				<TableRowEntries>
-					<TableRowEntry>
-						<TableColumnItems>
-							<TableColumnItem>
-								<PropertyName>Foo</PropertyName>
-							</TableColumnItem>
-							<TableColumnItem>
-								<PropertyName>Bar</PropertyName>
-							</TableColumnItem>
-						</TableColumnItems>
-					</TableRowEntry>
-				</TableRowEntries>
-			</TableControl>
+			<ListControl>
+				<ListEntries>
+					<ListEntry>
+						<ListItems>
+							<ListItem>
+								<PropertyName>Name</PropertyName>
+                            </ListItem>
+							<ListItem>
+								<Label>Tags</Label>
+								<ScriptBlock>$_.Tags -join ", "</ScriptBlock>
+                            </ListItem>
+							<ListItem>
+								<PropertyName>Text</PropertyName>
+                            </ListItem>
+                        </ListItems>
+                    </ListEntry>
+                </ListEntries>
+			</ListControl>
 		</View>
 	</ViewDefinitions>
-<Configuration>
+</Configuration>

@@ -1,7 +1,17 @@
 ﻿# Changelog
+## 2.1.28 (2020-03-21)
+ - New: Component: Knowledge - store and search knowledge
+ - New: Command: Read-PSUKnowledge (read, page, learn) - retrieves stored knowledge
+ - New: Command: Write-PSUKnowledge - writes knowledge for later retrieval
+ - New: Command: Remove-PSUKnowledge - removes knowledge from storage. Use on alternative facts.
+ - New: Command: Out-PSUVariable - writes input to variable, enabling variable assignment at the end of the pipeline
+ - New: Alias rmn --> Remove-PSFNull
+ - New: Dependency on string module, dropping own string cmdlets, ading aliases for compatibility
+ - New: Adding psf tab completion for property names to common object commands
+
 ## 2.0.20 (2019-09-18)
  - New: Command: Set-PSUPrompt - Applies a prompt from a set of pre-defined prompts
- - New: COmmand: Register-PSUObjectExpansion - Registers custom expansion rules for Expand-PSUObject
+ - New: Command: Register-PSUObjectExpansion - Registers custom expansion rules for Expand-PSUObject
  - Upd: Start-PSUTimer - Added -MinFrequency and -MaxFrequency parameters.
  - Upd: Start-PSUTimer - Refactored parameter order, rationalized message handling
  - Upd: Invoke-PSUExplorer - Enabled opt-in exceptions and improved path resolution
