@@ -105,3 +105,4 @@
 		}
 	}
 }
+Import-PSUAlias -Name 'teach' -Command Write-PSUKnowledge
