@@ -25,7 +25,7 @@
         Use this if you want the function to throw terminating errors you want to catch.
 	
 	.EXAMPLE
-		PS C:\> 100..110 | convert IntDec IntHex
+		PS C:\> 100..110 | convert dec hex
 	
 		Converts the numbers 100 through 110 from decimal to hexadecimal.
 #>

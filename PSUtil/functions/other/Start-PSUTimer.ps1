@@ -24,6 +24,9 @@
 	.PARAMETER AlarmInterval
 		In what time interval to write warnings and send sound.
 	
+	.PARAMETER RandomInterval
+		Randomizes the interval between two signal sounds.
+	
 	.PARAMETER MinFrequency
 		The minimum frequency of the beeps.
 		Must be at least one lower than MaxFrequency.
@@ -34,11 +37,16 @@
 		Must be at least one higher than MaxFrequency.
 		Increase delta to play random frequency sounds on each beep.
 	
+	.PARAMETER DisableScreensaver
+		Disables the screensaver while the timer is pending.
+		This only works on Windows and has the command pretend to be a video & backup application, preventing untimely activation of a screensaver.
+	
 	.EXAMPLE
 		PS C:\> timer 170 Tea
 		
 		After 170 Duration give warning that the tea is ready.
 #>
+	[Alias('timer')]
 	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
 	[CmdletBinding()]
 	param (
@@ -60,17 +68,25 @@
 		[int]
 		$AlarmInterval = 250,
 		
+		[switch]
+		$RandomInterval,
+		
 		[int]
 		$MinFrequency = 2999,
 		
 		[int]
-		$MaxFrequency = 3000
+		$MaxFrequency = 3000,
+		
+		[switch]
+		$DisableScreensaver
 	)
 	
 	begin
 	{
 		$start = Get-Date
 		$end = $Duration.Value
+		# Allow conveniently specifying absolute times for the day after
+		if ($end -lt $start) { $end = $end.AddDays(1) }
 		
 		function Get-FriendlyTime
 		{
@@ -111,6 +127,7 @@
 		while ($end -gt (Get-Date))
 		{
 			Start-Sleep -Milliseconds 500
+			if ($DisableScreensaver) { [PSUtil.Utility.UtilityHost]::DisableScreensaver() }
 			
 			if (-not $NoProgress)
 			{
@@ -129,10 +146,11 @@
 		while ($countAlarm -lt $AlarmCount)
 		{
 			Write-PSFHostColor -String "(<c='sub'>$countAlarm</c>) ### <c='em'>$($Message)</c> ###"
+			if ($DisableScreensaver) { [PSUtil.Utility.UtilityHost]::DisableScreensaver() }
 			[System.Console]::Beep((Get-Random -Minimum $MinFrequency -Maximum $MaxFrequency), $AlarmInterval)
-			Start-Sleep -Milliseconds $AlarmInterval
+			if ($RandomInterval) { Start-Sleep -Milliseconds (Get-Random -Minimum $AlarmInterval -Maximum ($AlarmInterval * 2)) }
+			else { Start-Sleep -Milliseconds $AlarmInterval }
 			$countAlarm++
 		}
 	}
 }
-Import-PSUAlias -Name "timer" -Command "Start-PSUTimer"
