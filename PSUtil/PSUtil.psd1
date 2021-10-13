@@ -3,6 +3,7 @@
 	RootModule = 'PSUtil.psm1'
 	
 	# Version number of this module.
+
 	ModuleVersion = '2.2.35'
 	
 	# ID used to uniquely identify this module
