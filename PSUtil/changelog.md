@@ -1,4 +1,15 @@
 ﻿# Changelog
+
+## 2.2.35 (2021-10-13)
+
+- New: Object Conversion - NT <--> SID
+- New: Object Conversion - string <--> base64
+- New: Command Get-PSUCalendarWeek - Calculates the calendar week of the specified date.
+- Upd: Start-PSUTimer - added `-RandomInterval` parameter, randomizing the sound playback interval
+- Upd: Start-PSUTimer - added `-DisableScreensaver` parameter, blocking screensaver for the duration of the timer
+- Upd: Start-PSUTimer - now automatically adds a day if the destination-time is in the past
+- Upd: Manifest - added ctx and cfx to the aliases exported, enabling auto-import from using those.
+
 ## 2.1.28 (2020-03-21)
  - New: Component: Knowledge - store and search knowledge
  - New: Command: Read-PSUKnowledge (read, page, learn) - retrieves stored knowledge

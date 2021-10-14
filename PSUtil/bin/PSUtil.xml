@@ -89,6 +89,41 @@
             List of registered conversions
             </summary>
         </member>
+        <member name="T:PSUtil.Utility.ExecutionState">
+            <summary>
+            The state of the current console
+            </summary>
+        </member>
+        <member name="F:PSUtil.Utility.ExecutionState.SystemRequired">
+            <summary>
+            Critical system resources are in use. Used for backups
+            </summary>
+        </member>
+        <member name="F:PSUtil.Utility.ExecutionState.DisplayRequired">
+            <summary>
+            Display must not be turned off. Used when running video software
+            </summary>
+        </member>
+        <member name="F:PSUtil.Utility.ExecutionState.UserPresent">
+            <summary>
+            There's an actual user around
+            </summary>
+        </member>
+        <member name="F:PSUtil.Utility.ExecutionState.AwayModeRequired">
+            <summary>
+            User must be away
+            </summary>
+        </member>
+        <member name="F:PSUtil.Utility.ExecutionState.Continuous">
+            <summary>
+            Something is happening for some time still
+            </summary>
+        </member>
+        <member name="T:PSUtil.Utility.NativeMethods">
+            <summary>
+            Internal helper tool for direct access to windows APIs
+            </summary>
+        </member>
         <member name="T:PSUtil.Utility.PsuTimeSpan">
             <summary>
             Wrapper class for a regular timespan. Copied from dbatools
@@ -374,6 +409,21 @@
             Creates extra-nice timespan formats
             </summary>
             <returns>Humanly readable timespans</returns>
+        </member>
+        <member name="T:PSUtil.Utility.UtilityHost">
+            <summary>
+            Static tools of convenience
+            </summary>
+        </member>
+        <member name="M:PSUtil.Utility.UtilityHost.DisableScreensaver">
+            <summary>
+            Tell the system, that something really, really important is happening here and screensaver would ruin the day
+            </summary>
+        </member>
+        <member name="M:PSUtil.Utility.UtilityHost.EnableScreensaver">
+            <summary>
+            Tell the system, that the screensaver may now be safely deployed again.
+            </summary>
         </member>
     </members>
 </doc>

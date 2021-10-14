@@ -3,7 +3,8 @@
 	RootModule = 'PSUtil.psm1'
 	
 	# Version number of this module.
-	ModuleVersion = '2.1.28'
+
+	ModuleVersion = '2.2.35'
 	
 	# ID used to uniquely identify this module
 	GUID = '9ef51588-c40c-4064-910d-9b624b758cf6'
@@ -26,8 +27,8 @@
 	# Modules that must be imported into the global environment prior to importing
 	# this module
 	RequiredModules = @(
-		@{ ModuleName = 'PSFramework'; ModuleVersion = '1.1.59' }
-		@{ ModuleName = 'string'; ModuleVersion = '0.6.1' }
+		@{ ModuleName = 'PSFramework'; ModuleVersion = '1.6.205' }
+		@{ ModuleName = 'string'; ModuleVersion = '1.0.0' }
 	)
 	
 	# Assemblies that must be loaded prior to importing this module
@@ -44,6 +45,7 @@
 		'Backup-PSULocation'
 		'Convert-PSUObject'
 		'Expand-PSUObject'
+		'Get-PSUCalendarWeek'
 		'Get-PSUPathAlias'
 		'Invoke-PSUDesktop'
 		'Invoke-PSUExplorer'
@@ -68,10 +70,10 @@
 	)
 	
 	# Cmdlets to export from this module
-	CmdletsToExport = ''
+	# CmdletsToExport = ''
 	
 	# Variables to export from this module
-	VariablesToExport = ''
+	# VariablesToExport = ''
 	
 	# Aliases to export from this module
 	AliasesToExport    = @(
@@ -82,8 +84,10 @@
 		'c'
 		'cast'
 		'cfj'
+		'cfx'
 		'convert'
 		'ctj'
+		'ctx'
 		'desktop'
 		'ec'
 		'ex'
@@ -115,6 +119,7 @@
 		'split'
 		'Split-PSUString'
 		'spo'
+		'teach'
 		'temp'
 		'timer'
 		'trim'
