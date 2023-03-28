@@ -1,5 +1,9 @@
 ﻿# Changelog
 
+## ???
+
+- Upd: Prompt Fred - added nested prompt level if greater than 0
+
 ## 2.2.35 (2021-10-13)
 
 - New: Object Conversion - NT <--> SID
