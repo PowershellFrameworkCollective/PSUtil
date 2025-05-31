@@ -27,8 +27,8 @@
 	# Modules that must be imported into the global environment prior to importing
 	# this module
 	RequiredModules = @(
-		@{ ModuleName = 'PSFramework'; ModuleVersion = '1.6.205' }
-		@{ ModuleName = 'string'; ModuleVersion = '1.0.0' }
+		@{ ModuleName = 'PSFramework'; ModuleVersion = '1.12.346' }
+		@{ ModuleName = 'string'; ModuleVersion = '1.1.5' }
 	)
 	
 	# Assemblies that must be loaded prior to importing this module
@@ -55,6 +55,7 @@
 		'Register-PSUObjectConversion'
 		'Register-PSUObjectExpansion'
 		'Read-PSUKnowledge'
+		'Remove-PSUDirectory'
 		'Remove-PSUKnowledge'
 		'Remove-PSUPathAlias'
 		'Select-PSUFunctionCode'
@@ -108,6 +109,7 @@
 		'ocb'
 		'ov'
 		'page'
+		'rcd'
 		'rdk'
 		'read'
 		'Remove-PSUString'
