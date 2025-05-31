@@ -53,7 +53,7 @@
 
 		if ($Force -or (Test-PSFShouldProcess -Target $location -ActionString 'PSUtil.Remove-PSUDirectory.RemoveItem' -ActionStringValues $children.Count, $location -PSCmdlet $PSCmdlet)) {
 			Set-Location -Path '..'
-			Remove-Item -LiteralPath $location -Force -Confirm:$false
+			Remove-Item -LiteralPath $location -Force -Confirm:$false -Recurse
 		}
 	}
 }

@@ -1,5 +1,9 @@
 ﻿# Changelog
 
+## 2.2.39 (2025-05-31)
+
++ Fix: Remove-PSUDirectory - stops asking whether you want to remove recursively, even after confirming execution
+
 ## 2.2.38 (2025-05-31)
 
 + New: Remove-PSUDirectory - Removes the current directory and moves the console to the parent folder.
