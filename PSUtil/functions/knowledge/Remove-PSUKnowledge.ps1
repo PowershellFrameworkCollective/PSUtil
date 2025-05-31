@@ -42,7 +42,7 @@
 	{
 		if (-not (Test-Path -Path $libraryPath)) { return }
 		
-		$bookName = '{0}.json' -f [System.Text.Encoding]::UTF8.GetBytes($Book)
+		$bookName = '{0}.json' -f [System.Convert]::ToBase64String(([System.Text.Encoding]::UTF8.GetBytes($Book)))
 		$bookPath = Join-Path $libraryPath $bookName
 		
 		if (-not (Test-Path -Path $bookPath)) { return }
