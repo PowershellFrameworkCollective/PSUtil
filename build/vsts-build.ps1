@@ -10,9 +10,22 @@ param (
 	$WorkingDirectory = $env:SYSTEM_DEFAULTWORKINGDIRECTORY
 )
 
+#region Handle Working Directory Defaults
+if (-not $WorkingDirectory)
+{
+	if ($env:RELEASE_PRIMARYARTIFACTSOURCEALIAS)
+	{
+		$WorkingDirectory = Join-Path -Path $env:SYSTEM_DEFAULTWORKINGDIRECTORY -ChildPath $env:RELEASE_PRIMARYARTIFACTSOURCEALIAS
+	}
+	else { $WorkingDirectory = $env:SYSTEM_DEFAULTWORKINGDIRECTORY }
+}
+if (-not $WorkingDirectory) { $WorkingDirectory = Split-Path $PSScriptRoot }
+#endregion Handle Working Directory Defaults
+
 # Prepare publish folder
 Write-PSFMessage -Level Important -Message "Creating and populating publishing directory"
-$publishDir = New-Item -Path $WorkingDirectory -Name publish -ItemType Directory
+$publishDir = New-Item -Path $WorkingDirectory -Name publish -ItemType Directory -Force
+Remove-Item -Path "$publishDir\*" -Recurse -Force -ErrorAction SilentlyContinue
 Copy-Item -Path "$($WorkingDirectory)\PSUtil" -Destination $publishDir.FullName -Recurse -Force
 
 #region Gather text data to compile
