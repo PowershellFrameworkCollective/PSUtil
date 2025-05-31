@@ -24,7 +24,7 @@
 
 		Tries to remove the directory and step back one level.
 	#>
-	[CmdletBinding(ConfirmImpact = 'High')]
+	[CmdletBinding(SupportsShouldProcess = $true, ConfirmImpact = 'High')]
 	param (
 		[switch]
 		$Force,
