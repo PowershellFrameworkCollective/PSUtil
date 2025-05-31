@@ -7,6 +7,8 @@ Insert any build steps you may need to take before publishing it here.
 param (
 	$ApiKey,
 	
+	$Repository = 'PSGallery',
+
 	$WorkingDirectory = $env:SYSTEM_DEFAULTWORKINGDIRECTORY
 )
 
@@ -81,4 +83,4 @@ $fileData = $fileData.Replace('"<compile code into here>"', ($text -join "`n`n")
 #endregion Update the psm1 file
 
 # Publish to Gallery
-Publish-PSFModule -Path "$($publishDir.FullName)\PSUtil" -ApiKey $ApiKey
+Publish-PSFModule -Path "$($publishDir.FullName)\PSUtil" -ApiKey $ApiKey -Repository $Repository
